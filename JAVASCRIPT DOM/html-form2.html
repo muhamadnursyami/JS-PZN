@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Form</title>
+  </head>
+  <body>
+    <form name="commentForm">
+      <label for="comment">
+        Comment : <input id="comment" type="text" name="comment" />
+      </label>
+      <br />
+      <label for="from">
+        From : <input id="from" type="text" name="from" />
+      </label>
+      <br />
+      <input type="submit" value="submit" />
+    </form>
+    <div id="commentList">
+      
+    </div>
+
+    <script>
+      //INI CARA LAIN AKSES FORM VIA NAME
+      // ini merupakan kelebihan dari form
+      // code ini berarti kita ingin mengakses form yang nama nya commetForm
+      document.forms ["commentForm"].onsubmit = function (event) 
+      {
+       
+        event.preventDefault();
+       
+        const commentList = document.getElementById("commentList");
+        // ini bacanya, dia akan mengambil forms yang nama form nya commentForm dan input namenya apa?. 
+        //misalkan disini coment atau forom
+        const comment = document.forms["commentForm"]["comment"].value;
+        const from = document.forms["commentForm"]["from"].value;
+        
+        
+        
+        const commentItem = document.createElement("p");
+        
+        commentItem.textContent = `${comment} : ${from}`;
+        
+        commentList.appendChild(commentItem);
+
+        // ini bacanya kita akan mengabil form yang namanya comment kemudia kita reset nilai form nya
+        document.forms["commentForm"].reset();
+        // lebih jelasnya ada d contoh 1
+      };
+    </script>
+  </body>
+</html>

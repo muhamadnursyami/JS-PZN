@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Contoh 1</title>
+  </head>
+  <body>
+    <h1 id="text">Silahkan Klik Box Kuning</h1>
+    <div
+      id="canvas"
+      style="width: 500px; height: 500px; background-color: yellow"
+    ></div>
+
+    <script>
+      //kita akan membuat, jika kita klik Box yang berwarna kuning, kita ingin mengetahui posisinya berdasarkan sumbu X dan Y.
+      const text = document.getElementById("text");
+      const canvas = document.getElementById("canvas");
+      // parameter di function itu event, event itu bermaksud ketika kita ingin mengambil detail nilai pada event click, selebihnya jika ingin tahu event apa aja di dalam click bisa lihat di documentasi
+
+      // ini pake GlobalEventListener
+
+      // canvas.onclick = function (event) {
+      //   // misalnya disini kita ingin mengambil sumbu x dan y pada saat kita ngelik di box kuning
+      //   text.textContent = `Sumbu X : ${event.x} Sumbu Y : ${event.y}`;
+      // };
+
+      // atau bisa juga seperti ini kalo pake addEventHandlerListener
+      // kalo pake addEventListener kita menggunakan event.clientX dan clientY berbeda dengan diatas
+      //memakai Global Event Handler
+
+      // canvas.addEventListener("click", function (event) {
+      //   text.textContent = `sumbu X : ${event.clientX} sumbu Y : ${event.clientY}`;
+      // });
+
+      //menggunakan addEventListener  dengan menerapakan callbacknya arrow function;
+      canvas.addEventListener("click", (event) => {
+        // atau jika parameternya hanya satu tidak usah pakai tanda kurung jadi hanya seperti ini saja : event => {};
+        text.textContent = `sumbu X : ${event.clientX} sumbu Y : ${event.clientY}`;
+      });
+    </script>
+  </body>
+</html>

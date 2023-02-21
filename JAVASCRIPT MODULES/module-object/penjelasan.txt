@@ -1,0 +1,7 @@
+ Permasalahan jika module yang kita export itu banyak sekali,
+dan ketika di import satu persatu , akan terlihat berantakan
+    -> direkomendasikan jika permasalahn seperti ini kita munggunakan module object 
+caranya penggunaanya di import:
+
+    import * as namaModule from "./module-object.js" 
+-> NAMA MODULE INI BEBAS, bisa seperti ini : Sami, atau sami, depannya boleh besar atau tidak.

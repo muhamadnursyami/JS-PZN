@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+      const promise = new Promise(function (resolve, reject) {
+        // parameter resolve dan reject ini adalah sebuah function resolve dan reject .
+        // Kode Yang berjalan dengan Asynchronous
+        // buat ajax
+        const ajax = new XMLHttpRequest();
+        // ambil data di file product.js
+        ajax.open("GET", "api/product.json");
+        // pada saat eksekusinya berhasil kita ingin melakukan sesuatu
+        ajax.onload = function () {
+          if (ajax.status == 200) {
+            resolve(ajax.responseText);
+          } else {
+            reject(`Error Get Product with Response ${ajax.responseText}`);
+            //  jika kita tidak membuat function resolve dan reject tidak di buat maka Promise State nya akan Pending dan resultnya akan unefined.
+          }
+        };
+        ajax.send();
+      });
+
+      console.info(promise);
+    </script>
+  </body>
+</html>

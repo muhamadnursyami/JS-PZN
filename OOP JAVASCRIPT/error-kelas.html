@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Error Class </title>
+</head>
+<body>
+    <script>
+        
+        class MathKalkulasi {
+
+            
+            static jumlah(...numbers){
+                
+                if(numbers.length === 0){
+                    throw new Error ("Total Parameter Harus Lebih Dari 0"); // Ini adalah Error messagenya 
+                }
+                let total = 0;       
+                for (const number of numbers){
+                    total += number;
+                }
+                return total;
+                
+            }
+        } 
+        
+            
+
+        /** 
+         * TODO : catch ini akan di eksekusi jika terjadi error, kalo tidak terjadi error dia tidak akan di eksekusi, dan menangkap error di try untuk di berikan pesan error
+         * TODO :message ini ada property bawaan yang ada di kelas error
+        */
+
+        try {
+            // console.info(MathKalkulasi.jumlah(1,1,1));// kode tidak error
+            console.info(MathKalkulasi.jumlah());// kode error
+            console.info("SYami");
+        } catch (error) {
+            console.info(`Terjadi Error di ${error.message}`);// jika ada error maka pesan  ini yang akan di tampilkan.
+        }
+        finally{
+            console.info(`Program Selesai`); // error atau tidak, block ini akan di eksekusi
+        }
+        console.info("Eko");
+        
+
+
+        /** 
+         * *Kata Kunci Finally
+         * TODO : kata kunci finally ini akan di eksekusi setelah try catch, entah terjadi error atau tidak error, block finally akan selalu di eksekusi
+        */
+        /** 
+         * *Try Finalyy
+         * TODO : sesuatu yang bisa di sebut trik, jika kita tidak menggunakan catch, biasanya digunakan dengan kasus tertentu.
+        */
+
+        class Counter {
+            #counter = 0;
+
+            next (){
+                try {
+                    return this.#counter;// kalo ini di balekin, return tarok di finally, dan sebaliknya, maka hasilnya akan berbeda
+                }    
+                finally{
+                    this.#counter++;
+                }
+            }
+        }
+
+        const jumlah = new Counter();
+        console.info(jumlah.next());
+        console.info(jumlah.next());
+        console.info(jumlah.next());
+        console.info(jumlah.next());
+        console.info(jumlah.next());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Mengirim dengan Form</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        username
+        <input type="text" name="username" id="username" />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" name="password" id="password" />
+      </label>
+      <br />
+      <input type="button" name="login" id="login" value="Login" />
+      <h1 id="reponse"></h1>
+    </form>
+    <script>
+      function doLogin() {
+        // membuat ajax
+        const ajax = new XMLHttpRequest();
+        // mengirim ajax
+        ajax.open("POST", "https://eo5848pozghh6wj.m.pipedream.net");
+        // hasil, setelag eksekusi
+        ajax.onload = function () {
+          const reponse = document.getElementById("reponse");
+          reponse.innerHTML = ajax.responseText;
+        };
+        // buat URLSearchParams
+        const form = new URLSearchParams();
+        // tambahkan urlsearch params unutk username dan password
+        form.append("username", document.getElementById("username").value);
+        form.append("password", document.getElementById("password").value);
+        // kita berikan request header dimana, content type ini, atau tipe data ini adalah form.
+        ajax.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        // kemudia kita send di dalam dari varivael form yang berisi URLSearchParams.
+        ajax.send(form);
+      }
+      document.getElementById("login").onclick = doLogin;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map</title>
+  </head>
+  <body>
+    <script>
+      /*
+        -> Map merupakan representasi dari sturuktur data key - value
+        -> Map  mirip seperti tipe data object hanya saja Map, smeua method untuk memanipulasi
+            data sudah disediakan
+        -> dan map mengikuti kontrak iterable
+            1) pertama di buat map tidak memiliki key  atau propertinya kalo di object
+            2) Key bisa tipe data apapun
+            3) jumlah key  bisa diketahui dengan attribut size
+            4) secara default map itu tidak bisa di konversikan di JSON
+            jika ingin melihat perbedaan Map dan Object silahkan lihat di documentasi
+
+        Method intance Method dan Property
+        1) size             -> untuk mendapatkan jumlah key didalam Map nya
+        2) clear ()         -> menghapus semua isi Map
+        3) delete(key)      -> menghapus data berdasarkan key
+        4) get (key)        -> mendapatkan data berdasarkan key, balikannya value
+        5) has(key)         -> mengecek apakah  map berisi data key yang di masukan, balikannya boolean, true kalo ada , false kalo tidak ada
+        6) set(key, value ) -> mengubah data Map dengan key nya dan value yang mau di tambahkan
+        7) forEach((key , value)=> {}) -> mengiterasi Map
+
+        */
+
+      const person = new Map();
+      person.set("Nama", "Muhamad Nur Syami");
+      person.set("Negara", "Indonesia");
+      person.set("Kota", "Tanjungpinang");
+
+      console.info(person); // object dalam bentuk map
+      console.info(person.size); // 3 karena  name, addres, city
+      console.info(person.get("Negara")); // indonesia
+      console.info(person.has("Kota")); // true
+
+      person.forEach((key, value) => {
+        console.info(`${value} : ${key}`);
+      });
+
+      console.info(person.delete("Kota")); // true
+      console.info(person); // jadi sisa object ,setelah di hapus citynya menjadi 2, tinggal Name,Addres
+    </script>
+  </body>
+</html>

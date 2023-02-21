@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data Array  </title>
+</head>
+<body>
+    
+    <script>
+    let arrayKosong = [];
+    
+    let arrayNama = ["Muhamad", "Nur", "Syami", 1, true];
+
+    const names =[];
+        names.push("Muhamad"); //Index Ke 0 atau data ke satu
+        names.push("Nur", "Syami"); // Index Ke 1 dan 2 
+
+        console.table(names);
+        
+        console.info(names[0]);
+        console.info(names[1]);
+        console.info(names[2]);
+        
+        names[0] = "Univesitas";
+        names[1] = "Maritim";
+        names[2] = "Raja Ali Haji";
+        names[3] = "gg";
+        names[4] = "mantap";
+        
+    
+        console.table(names);
+
+        delete names[3];
+        console.table(names);
+
+        names.push("well played");
+        console.table(names);
+
+        names [3] = "diubah";
+        names.push(1,2,3);
+        names.push(["Muhamad","Nur", "Syami"])
+        console.table(names);
+
+
+
+
+    </script>
+</body>
+</html>

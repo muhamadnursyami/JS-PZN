@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Class : Public Field</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            /* Kalo untuk Property, tempatnya dipaling atas biar terstruktur : 
+            yang paling atas itu fieldnya, yang tengah itu constructornya , yang bawah itu method2 nya ,
+            field ini nempel di object instace const syami  bukan di prototypenya */
+            fistName;
+            lastName; // <- tidak berisi value sifatnya public
+            umur = 12; // <- berisi value
+            // Selevel dengan method dan consturctor
+            constructor(firstName, lastName) {
+                this.fistName = firstName;
+                this.lastName = lastName;
+            }
+            sayHello() {
+
+            }
+        }
+
+        const syami = new Person("Muhamad", "syami");
+        console.info(syami);
+
+    </script>
+</body>
+
+</html>

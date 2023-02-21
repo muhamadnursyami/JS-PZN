@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NodeList Static</title>
+  </head>
+  <body>
+    <ul id="menu1">
+      <li id="first">first</li>
+      <li id="second">second</li>
+      <li id="thrid">thrid</li>
+    </ul>
+    <ul id="menu2">
+      <li>Eko</li>
+      <li>Kurniawan</li>
+      <li>Khannedy</li>
+    </ul>
+
+    <script>
+      let list = document.querySelectorAll("li");
+
+      //kita tambahkan li nya di menu 1
+      const menu1 = document.getElementById("menu1");
+      menu1.appendChild(document.createElement("li"));
+      menu1.appendChild(document.createElement("li"));
+
+      // jika kita ingin mendapatkanya lagi, kita harus query ulang seperti ini :
+      list = document.querySelectorAll("li");
+      console.info(list);
+    </script>
+  </body>
+</html>

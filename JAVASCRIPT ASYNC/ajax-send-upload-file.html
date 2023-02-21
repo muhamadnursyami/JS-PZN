@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Mengirim Upload File</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        username
+        <input type="text" name="username" id="username" />
+      </label>
+      <br />
+      <label>
+        Name:
+        <input type="text" name="name" id="name" />
+      </label>
+      <br />
+      <label>
+        Profile:
+        <input type="file" name="profile" id="profile" />
+        <!-- Jika ingin upload file lebih dari 1, tambah kan saja attibute di input file :,multipe -->
+      </label>
+      <br />
+      <input type="button" name="register" id="register" value="Register" />
+      <h1 id="reponse"></h1>
+    </form>
+    <script>
+      function doLogin() {
+        const ajax = new XMLHttpRequest();
+        ajax.open("POST", "https://eo5848pozghh6wj.m.pipedream.net");
+        ajax.onload = function () {
+          const reponse = document.getElementById("reponse");
+          reponse.innerHTML = ajax.responseText;
+        };
+        // ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        // kenapa tidak menggunakan setRequestHeader, karena secara otomatis content form sudah di buat dengan content type multipe form
+        // itu sebabkan karena kita menggunakan input type nya itu file, id profile
+
+        // class/ methods digunakan untuk form yang bersifat untuk upload filenya
+        const form = new FormData();
+        form.append("username", document.getElementById("username").value);
+        form.append("name", document.getElementById("name").value);
+        // untuk mengambil file nya ada beberapa cara, saya contoh seperti pak eko, dimana kita simpan dulu data nya kedalam sebuah variabel.
+        const file = document.getElementById("profile").files; // files disini adalah attibute dari  filesList .
+        const firstFile = file.item(0); // item(0) ini adalah method yang digunakan untuk mengambil data file keberapa, contoh ini index ke 0 berarti data yang pertama.
+        // baru masukan data firstFile ke dalam form
+        form.append("file", firstFile);
+        //bisa juga begini
+        // form.append("files", document.getElementById("profile").files.item(0));
+
+        ajax.send(form);
+      }
+      document.getElementById("register").onclick = doLogin;
+    </script>
+  </body>
+</html>

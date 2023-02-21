@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * * String Method dan properties
+       * * fitur ini bukan mengubah datanya, tetapi membuat data baru dan di ubah jadi data lama tidakterganggu
+       */
+
+      const data = "Muhamad Nur Syami"; // -> Spasi Juga Di hitung
+      const kalimat = "Pada Hari Minggu Saya berolahraga didompak";
+
+      console.info(data.length); //Menghitung Panjang String 17;
+      console.info(`Hai Nama Saya : ${data.repeat(3)}`); //mengulang/ menduplikat string data (3) -> maksudnya menduplikasi berapa kali 3kali atau ?;
+      console.info(kalimat.slice(17)); // (17) -> pada kalimat ke 17 baru di cetak kalimatnya , hitunganya dari 0
+      console.info(kalimat.slice(0));
+      console.info(kalimat.slice(17, 33));
+      console.info(kalimat.slice(-8)); // hitung dari depan
+
+      console.info(data.split(" ")); // Memotong string menjadi array, dengan spasi.
+      console.info(data.split(" ", 2)); // Memotong string menjadi array, dengan spasi dan mengambilnya cuma 2 data dari muhamad dan nur, syaminya tidak ikut.
+      console.info(data.toLowerCase());
+      console.info(data.toUpperCase());
+
+      /**
+       * TODO :Jika ada kasus user meninput seperti ini :_____Eko Khannedy_____   (_) -> Spasi
+       * *bagai mana cari menghapus spasi di kiri/awal dan spasi di kanan/ akhir
+       * ! Pake Trim();
+       * ! Pake trimStart();
+       * ! Pake trimEnd();
+       */
+
+      const name = "     Eko Khannedy     ";
+      console.info(name);
+      console.info(name.trim()); // Hapus Semua awal dan akhir spasi
+      console.info(name.trimStart()); //Hapus Awal saja
+    </script>
+  </body>
+</html>

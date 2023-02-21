@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimesOut Asyncronus</title>
+  </head>
+  <body>
+    <script>
+      //  setTimesOut digunakan untuk menjalankan proses Async sekali dalam waktu Tertentu.
+      //  setTimesout (callback, timesinMillis)
+
+      function addElement() {
+        const header = document.createElement("h1");
+        header.textContent = "Programmer Zaman Now ";
+
+        document.body.appendChild(header);
+      }
+
+      setTimeout(addElement, 5000); // function ini berjalan secara mandiri, tidak harus menunggu selama 5 detik, baru program setelah di eksekusi
+      console.info("program selesai");
+    </script>
+  </body>
+</html>

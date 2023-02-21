@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Style javascript</title>
+  </head>
+  <body>
+    <input type="button" value="blue" />
+    <input type="button" value="red" />
+    <input type="button" value="yellow" />
+    <div
+      id="canvas"
+      style="width: 500px; height: 500px; background-color: black"
+    ></div>
+    <script>
+      // karena querySelectorAll, artinya semua query yang memiliki tag input akan di ambil dan di masukan
+      // kedalam variabel const button
+      const button = document.querySelectorAll("input");
+      /// kita ambil dulu id canvas kemudian kita simpan data id canvas ke variabel const canvas;
+      const canvas = document.getElementById("canvas");
+
+      // selanjutnya kasus dimana, saat kita klik misalkan tombol blue maka canvas nya akan berwarna blue
+      // saat kita click tombol red, maka canvasnya akan berwarna red, dan seterusnya
+
+      // masalah ini kita bisa selesaikan dengan mengiterasi si button, dengan for of,
+      // pada saat kita mengiterasi ke 3 button tersebut.
+      for (const buttons of button) {
+        // kemudian kita kasih eventListenr click
+        // artinya  jika salah satu  button itu di click.yaitu button blue, red dan yellow
+        buttons.addEventListener("click", function () {
+          // maka tindakan yang di ambil adalah untuk code, canvas.style.backgoround.Color,
+          // dia masuk ke div id canvas, kemudian , masuk kedalam attribute style, setelah itu akan mengubah
+          // backgroundColor nya, kemudian tanda = , dimana warna nya merujuk pada code dibawah ini
+          // kemudian maksud dari code, buttons.getAttribute("value");
+          // warna tersebut merujuk pada button yang di kliknya,
+          // artinya, button yang kita klik itu, button tersebut memiliki
+          // atribut bernama value, dimana attribut tersebut kita ingin mendapatkan isi attibutnya
+          // menggunakan getAttribute(), dan isi dari attibute tersebut bisa blue, red dan yellow
+          canvas.style.backgroundColor = buttons.getAttribute("value");
+        });
+      }
+    </script>
+  </body>
+</html>

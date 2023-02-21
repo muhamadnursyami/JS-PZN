@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Type</title>
+  </head>
+  <body>
+    Muhamad Nur Syami
+    <!-- Ini commentar -->
+    <h1>Hello World</h1>
+    <input type="text">
+    <script>
+      const nodes = document.body.childNodes;
+
+      const inputType = document.querySelector("input");
+      // console.info(`${inputType} : ${inputType.nodeType}`); atau hanya mau mengetahui element saja
+      // pake forEach
+        nodes.forEach(function (nodes) {
+          console.info(`${nodes} : ${nodes.nodeType}`);
+        });
+
+      // atau bisa forEach arrow function
+      // nodes.forEach((nodes) => {
+      //   console.info(`${nodes} : ${nodes.nodeType}`);
+      // });
+      // pake for of
+      //   for (const node of nodes) {
+      //     console.info(`${node} : ${node.nodeType}`);
+      //   }
+    </script>
+  </body>
+</html>

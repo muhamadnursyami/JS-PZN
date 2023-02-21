@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForEach</title>
+  </head>
+  <body>
+    <script>
+      //misalkan nilai yang di input itu array dan kita mau
+      const input = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      {
+        // mengiterasi si array ini dan ingin nilainya tanpa array;
+
+        input.forEach(function (input) {
+          console.info(input);
+        });
+        // bisa juga menggunakan arrow function
+        //   input.forEach(input => {
+        //     console.info(input);
+        //   })
+      }
+      {
+        // misal kita ingin mengambil nilainya dan index nya
+        input.forEach(function (input, index) {
+          console.info(`Index Ke [${index}] : ${input}`);
+        });
+        // bisa juga menggunakan arrow function
+        //   input.forEach((input,index) => {
+        //     console.info(input);
+        //   })
+      }
+      {
+        // misal kita ingin nilai nya dan indexnya tapi berupa array;
+        input.forEach(function (input, index, array) {
+          // jika mau dapat array, harus parameternya 3. udah ketentuannya dari dokumentasi
+          console.info(array);
+          // bisa juga menggunakan arrow function
+          //   input.forEach((input,index,array) => {
+          //     console.info(input);
+          //   })
+        });
+      }
+    </script>
+  </body>
+</html>

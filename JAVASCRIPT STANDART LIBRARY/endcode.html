@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Endcoded dan Decoded</title>
+  </head>
+  <body></body>
+  <script>
+    /*
+        -> kita harus melakukan encode  pada url , karena agar tidak terjadi kesalahan data pada saat dikirim di server.
+        -> http://contoh.com?data=&eko=eko&.
+        -> url di atas itu bermasalah jika kita kirim ke server, karena parameter nya bernilai kosong
+            kenapa?, karena tanda & (dan) itu dianggap sebagai pemisah antara parameter.
+            dan ada juga tanda spesial charakter yang lain.
+
+        -> Encode Function
+            ->> encodeURI (value)  -> melakukan encode value, namun karakter yang dipesan diURI tidak akan diubah,
+                                        contoh : ; / ? : @ & = + $ # 
+            
+            ->> encodeURIComponent(value) ->  Melakukan encode value  semua karakter, dia merubah semuanya, tanpa melihat ada karena tanda / ? : & dan lain lain.
+            ->> decodeURI(value)  -> melakukan decode value hasil encodeURI(), seperti mengembalikan nilai aslinya.
+            ->> decodeURIComponent(value) -> melakukan decode value hasil endcodeURIComponent seperti mengembalikan nilai asli encodeURIComponent
+     */
+
+    {
+      //endcode uri dan decode uri
+      const url = "http://www.contoh.com/?name=Eko Kurniawan Khannedy";
+      console.info(url);
+
+      const endcoded = encodeURI(url); // jika di endcode, spasi di eko kurniawan itu menjadi %20;
+      console.info(endcoded);
+
+      const decoded = decodeURI(endcoded);
+      console.info(decoded);
+    }
+
+    {
+      //studi kasus masalahnya
+
+      const url = "http://www.contoh.com/?name=Eko&Kurniawan=Khannedy";
+      console.info(url);
+
+      const endcoded = encodeURI(url); // jika di endcode, Eko&Kurniawan=Khannedy , itu tidak berubah, malah dia menjadi spasi, karena ikut aturan di url.
+      //jadi harus berhati-hati , hal ini kita bisa selesaikan dengan menggunakan endcodeURIComponent.
+      console.info(endcoded);
+
+      const decoded = decodeURI(endcoded);
+      console.info(decoded);
+    }
+
+    {
+      //Code untuk menyelsaikan kasus masalah menggunakan EndcodeURIComponent
+      /*perlu di perhatikan jika kita menggunakan endcodeURIComponent :
+        jangan endcode semua url nya seperti ini : "http://www.contoh.com/?name=Eko&Kurniawan=Khannedy",
+        kalo seperti ini, dia akan mengencode semua, jadi urlnya menjadi tidak valid,
+        -> kita harus pisahkan mana value yang ingin kita ubah, untuk dikirimkan ke server
+        -> dan url yang tidak perlu di ubah, misalkan di pisahkan menjadi seperti ini:
+
+        -> url : "http://www.contoh.com/?name="
+        -> value : "Eko&Kurniawan=Khannedy"
+
+        data value parameternya saja yang di ubah, untuk urlnya full nya tidak usah.
+      */
+
+      const url = "http://www.contoh.com/?name=";
+      const value = "Eko&Kurniawan=Khannedy";
+      console.info(url + value);
+
+      const endcoded = encodeURIComponent(value); // maka eko&kurniawan di ganti menjadi %26, dan kurniawan= khannedy di ganti menjadi %3d
+      console.info(url + endcoded);
+
+      const decoded = decodeURIComponent(endcoded);
+      console.info(url + decoded);
+    }
+  </script>
+</html>

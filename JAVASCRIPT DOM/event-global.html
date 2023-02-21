@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlobalEventListener</title>
+  </head>
+  <body>
+    <input id="clickMe" type="button" value="clickMe" />
+    <script>
+      //kita ambil dulu element click me di input, kemudian simpan dia ke dalam variabel button
+      const button = document.getElementById("clickMe");
+      // pemanggilan event onclick 1
+      button.onclick = function () {
+        button.setAttribute("value", "You Already Click Me");
+        // kita bisa melkukan nya dengan cara ini untuk mendapatkan hasil yang sama dengan addEventhandler, karena globalevent tidak bisa memanggil lebih dari satu kali event handlernya
+        // console.log("Button Di klik");
+      };
+      // pemanggilan event onclick ke 2
+      button.onclick = function () {
+        console.log("Button Di click");
+      };
+
+      // kita implementasikan perbedaan addEventLister dan GlobalEventListener.
+      //jika kita menggunakan addEventListener itu kita bisa menggunakan EventListenernya itu.
+      // bisa beberapa kali atau istilahnya bisa melakukan beberapa kali callback.
+      // kalo menggunakan globalEventListener itu cuman bisa sekali saja,
+      // tidak bisa jika melakukan contoh yang diatas melakukan pemanggilan event 2 kali,
+      // ini akan menyebabkan pemanggilan event yang pertama akan menimpa event yang kedua
+      // jadi nanti hasilnya ketika di klik, buttonnya tidak berubah valuenya, tetapi ketika
+      //kita lihat di console. itu dia hanya menampilkan pemanggilan onclick yang ke 2
+      // jika kita mau melakukan hal yang sama seperti contoh Code addEventLister
+      // kita bisa menambahkan console.log("button di click ");
+      // didalam pemanggilan event onclick yang 1,
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+TEXT CONTENT DAN INNER CONTENT
+
+->  Selain, textContent, terdapat property lain yang bernama innerText untuk mendapatkan
+    isi text dari sebuah element.
+
+->  Tujuannya sama , untuk mengambil atau mnegubah isi text konten sebuah element, namun ada perbedaanya.
+
+->  textContent itu akan mengembalikan semua isi dari konten text sebuah element.
+->  innerText itu bisa tahu, bagian text mana yang di tampilkan, maksudnya, kalo ada bagian-bagian  
+                text yang tidak akan di tampilkan itu seperti script dan style.
+                dan dia hanya akan mengambil text yang akan ditampilkan saja oleh browser.
+                kalo sih textContent itu mengembalikan semua berserta tag tag htmlya.
+
+
+-> INNER HTML
+->  Jika textContent dan innerText hanya mengambil text saja ,
+    Inner HTML akan mengambil seluruh element HMTLNYA
+    sebagi text.
+
+->  ini cocok jika kita ingin mengubah isi dari elemen menggunakan text yang 
+    berisi tag HTML.
+
+->  Mengubah Element Dengan Inner HTML
+->  salah satu kemampuan dari inner HTML adalah kita bisa mengubah isi dari children 
+    sebuah element hanya dengan string.
+->  tag yang terdapat didalam String secara otomatis akan menjadi child Element.

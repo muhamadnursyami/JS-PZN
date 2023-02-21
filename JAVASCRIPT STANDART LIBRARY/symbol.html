@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symbol</title>
+  </head>
+  <body>
+    <script>
+      // selain tipe data string untuk key dalam sebuah object , kita juga bisa menggunakan symbol
+
+      {
+        //CONTOH 1.
+        // seperti ini cara membuat Symbol
+        const fistName = Symbol(); // boleh juga seperti ini
+        const lastName = Symbol("lastname"); // -> ini adalah deskrpsinya, opsional, bukan key.
+
+        // contoh, jika kita ingin memasukan data kedalam object
+        const person = {}; // buat object kosong dulu
+
+        person[fistName] = "Muhamad"; // cara memasukan data symbol ke dalam object person
+        person[lastName] = "Syami";
+
+        console.info(person); // result : object
+        console.info(person[fistName]); // jika  ingin mengambil data firstName
+        console.info(person[lastName]); // jika ingin mengambil data lastName
+      }
+
+      {
+        //Static method Symbol
+        /*
+        -> kadang agak sulit membuat symbol harus selalu mengggunakan variable
+        -> Pembuatan Symbol  juga bisa menngunakan Symbol.for(key).
+        -> jika kita menggunakan Symbol yang sama , maka  yang akan  di kembalikan adalah symbol yang sama
+        */
+        //Permasalahan, contoh membuat symbol dengan menggunakan varibale satu persatu
+        // const fistName = Symbol();
+        //  const lastName = Symbol();
+        //Jika kita membuat symbol tetapi tidak mau membuat variablenya satu/satu. seperti di contoh 1. kita bisa menggunakaN Symbol.for(key);
+
+        const person = {}; // langsung saja buat object kosong
+        //                     |
+        //                     V ini adalah key nya
+        person[Symbol.for("firstName")] = "Muhamad";
+        person[Symbol.for("lastName")] = "Syami";
+
+        console.info(person);
+        console.info(person[Symbol.for("firstName")]);
+        console.info(person[Symbol.for("lastName")]);
+      }
+    </script>
+  </body>
+</html>

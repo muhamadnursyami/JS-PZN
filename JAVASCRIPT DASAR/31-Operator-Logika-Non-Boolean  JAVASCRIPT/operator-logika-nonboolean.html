@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Operator Logika Non boolean </title>
+</head>
+<body>
+    
+    <script>
+
+        // Kode :Operator Or Non Boolean
+
+        console.info("Hello" || ""); // Hello
+        console.info("" || []); // []
+        console.info("0" || "NOL"); // string 0
+        console.info(0 || "NOL"); // string NOL
+        console.info(null || "NULL"); // string NULL
+        console.info(undefined || "UNDEFINED"); // string UNDEFINED
+        console.info(0 || false);  // false
+
+// Kapan Menggunakan  Operator Or
+// Contoh :
+
+const person = {
+    fistName : "",//"Muhamad"
+    lastName : "Syami"
+};
+
+const name = person.fistName || person.lastName;
+
+console.info(name);
+
+console.info("Hello" && '');// string kosong
+console.info("" && []); //string kosong
+console.info("0" && "NOL"); //STRING 0
+console.info(null && "NULL"); // null
+console.info(undefined && "UNDEFINED"); // undefined
+
+
+    </script>
+</body>
+</html>

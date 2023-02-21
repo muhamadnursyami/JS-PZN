@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+</head>
+<body>
+
+    
+    <script>
+
+        //Kode : Global Scope
+
+        // Global Scope
+        let counter = 0;
+
+        // Global Scope 
+        function hitMe(){
+            // Local Scope
+            counter++;
+        }
+
+        hitMe();
+        hitMe();
+        console.info(counter);
+
+
+        // Kode : Local Scope
+
+        // function first (){
+            //  local scope
+
+        //     let firstName = "sami";
+        // }
+
+        // first();
+        // console.info(firstName);
+
+
+
+        //  Nested Local Scope
+
+        function awal(){
+            // Local Scope
+
+            let variabelAwal = "sami";
+
+            function awalNested (){
+
+                console.info(variabelAwal);
+                const variabelNested = "Budi"; 
+            }
+
+            awalNested();
+            console.info(variabelNested);// Error : Tidak bisa mengakses karena berada di luar Scope 
+
+        }
+        awal();
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

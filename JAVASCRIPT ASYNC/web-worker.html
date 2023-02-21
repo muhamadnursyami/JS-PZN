@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Woker</title>
+  </head>
+  <body>
+    <button class="taskButton">Button</button>
+    <script>
+      // Web Woker
+      // Web Woker digunakan untuk menanggani proses lambat di dalam browser, istilah nya hag browser.
+      //  kasus misal jika kita melooping angkat yang besar seperti ini yang membutuhkan waktu lama, website akan hag.
+      // function slowLoop(total) {
+      //   for (let i = 0; i < total; i++) {
+      //     console.log(i);
+      //   }
+      // }
+
+      // document.querySelector(".taskButton").onclick = function () {
+      //   console.log("Awal");
+      //   slowLoop(50000);
+      //   console.log("Selesai");
+      // };
+
+      // UNTUK MASALAH SEPERTI INI KITA BISA MENGGUNAKAN WOKER
+      // Worker itu konsep seperti membagi pekerjaan yang lambat itu ke dalam worker lain.
+      // Kemudian jika proses yang lambat itu sudah selesain, maka akan di kirim kan ke worker utama.
+      const worker = new Worker("worker.js"); // file ini untuk menjadi worker ke 2 untuk melakukan proses lambat.
+      // const worker2 = new Worker("worker.js");
+      // const worker3 = new Worker("worker.js");
+      //  Kemudian tambahkan eventLister message, ini untuk menerima data dari file worker.js
+      worker.addEventListener("message", function (message) {
+        console.log(message.data); // data ini adalah properti dari event message, yang artinya mengambil data nya.
+      });
+
+      // Untuk mengirim Pesan , gunakan method postMessage
+      document.querySelector(".taskButton").onclick = function () {
+        //  Mengirim data kedalam file worker js
+        worker.postMessage(10000); // 10000 total untuk perulangannya
+      };
+    </script>
+  </body>
+</html>

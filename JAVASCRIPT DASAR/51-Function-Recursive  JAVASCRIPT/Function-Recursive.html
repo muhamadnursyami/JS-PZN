@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Recursive</title>
+</head>
+<body>
+
+    
+    <script>
+
+        // // Faktorial Perulangan
+
+        // function faktorial(value) {
+        //     let result = 1;
+
+        //     for (let i = 1; i <= value; i++) {
+        //         result *= i;
+                
+        //     }
+        //     return result;
+        // }
+
+        // console.info(faktorial(5));
+
+        // //  Faktorial Recursive 
+
+        // function faktorialRecursive (value){
+
+        //     if(value === 1){
+        //         return 1;
+        //     }
+        //     else {
+        //         return value * faktorialRecursive(value - 1);
+        //     }
+
+        // }
+        // console.info(faktorialRecursive(5));
+
+        //  Tugas Dari Mas Eko membuat perulangan 1-10 tanpa while , for, do while
+        // COntoh Pake For  
+            // function iterasi (parameterIterasi){
+                
+            //     for(let i = 1; i <= parameterIterasi; i++ ){
+            //         console.info(i);
+            //     }
+            // }
+            // iterasi(10);
+
+            function iterasiRecursive (value){
+
+                if (value == 1 ){
+                    console.info(value);
+                    return 1;
+                }
+                else {
+                    console.info(value);
+                    return iterasiRecursive (value - 1);
+                }
+            }
+            iterasiRecursive(10);
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

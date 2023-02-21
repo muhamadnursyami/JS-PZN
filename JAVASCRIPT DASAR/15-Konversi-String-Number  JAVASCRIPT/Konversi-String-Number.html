@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi String Number </title>
+</head>
+<body>
+    
+    <script>
+        // Contoh Kasus Jika tanpa Konversi 
+        const value1 = "1";
+        const value2 = 1;
+        const sum = value1 + value2;
+
+        document.writeln(`<p>${sum} </p>`)
+
+        // Contoh Menggunakan Konversi 
+        document.writeln(`<p> ${parseInt("1.1")} </p>`) // 1
+        document.writeln(`<p> ${parseFloat("1.1")} </p>`) // 1.1
+        document.writeln(`<p> ${Number("1.1")} </p>`)// 1.1
+
+        const a = 1;
+        const b = 1;
+
+        const total = a.toString () + b.toString ();
+        document.writeln(`<p> ${total} </p>`)// 1.1
+
+        // Kode NaN
+        //  Javascript Mentoleransikan Kesalahan Jika kesalahan tersebut berada di belakangan number untuk parse int dan parse float
+        document.writeln(`<p> ${parseInt("1Salah")} </p>`) // 1.1
+        document.writeln(`<p> ${parseInt("Salah1")} </p>`) // NaN
+        document.writeln(`<p> ${parseFloat("1.1text")} </p>`) // 1.1 
+
+        // Number Tidak Mentolerasi Kesalahan 
+        document.writeln(`<p> ${Number("1Salah")} </p>`) // NaN
+        document.writeln(`<p> ${Number("1.1text")} </p>`) // NaN
+        
+        // Kode Operasi NaN
+
+        const first = Number("Salah ") // Nan
+        const totalNumber = first + 100;
+        document.writeln(`<p> ${totalNumber} </p>`) // NaN
+
+        // isNan ()
+
+        document.writeln(`<p> ${isNaN(first)} </p>`) // NaN
+        document.writeln(`<p> ${isNaN(100)} </p>`) // NaN
+        document.writeln(`<p> ${isNaN(NaN)} </p>`) // NaN
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NodeList Live</title>
+  </head>
+  <body>
+    <ul id="menu1">
+      <li id="first">first</li>
+      <li id="second">second</li>
+      <li id="thrid">thrid</li>
+    </ul>
+    <ul id="menu2">
+      <li>Eko</li>
+      <li>Kurniawan</li>
+      <li>Khannedy</li>
+    </ul>
+
+    <script>
+      const menu1 = document.getElementById("menu1"); //.childNodes; jika ini di gabungkan bersama getElementById, maka tidak akan bisa.
+      const list = menu1.childNodes; // caranya ini ikut dokumentasi resmi javascript, tidak seperti yang diatas.
+      // walaupun kita sudah menyimpan data menu1.chilNodesnya di variabel list, kemudian
+      // kita tambahkan li di dalam MENU 1. kemudian kita cetak listnya, seharusnya dia tidak ditambahkan
+      //karenakan kita sudah simpan data menu1.childNode ke dalam variabel list. tapi data tersebut
+      //tetap di tampilkan di Nodelist , maka di disebut nodelist live
+      menu1.appendChild(document.createElement("li"));
+      menu1.appendChild(document.createElement("li"));
+
+      console.info(list);
+    </script>
+  </body>
+</html>

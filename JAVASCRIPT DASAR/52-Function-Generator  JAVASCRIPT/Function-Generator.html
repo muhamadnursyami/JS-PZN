@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Generator</title>
+</head>
+<body>
+
+    
+    <script>
+        // Function Generator Sederhana
+        function* creatNames(){
+            yield "Muhamad";
+            yield "Nur";
+            yield "Syami"
+        }
+
+        const names = creatNames();
+        for (const name of names) {
+            console.info(name);
+        }
+
+        // Function Genenrator Compleks
+
+        // function* nomorGanjil (value) {
+        //     for(let i = 1; i <= value ; i++){
+        //         if (i % 2 == 1){
+        //             yield i;
+        //         }
+        //     }
+        // }
+        // const numbers = nomorGanjil(100);
+        // for (const number of numbers) {
+            
+        //     console.info(number)
+        // }
+
+    //Kasus  FUnction Generator
+    // Namanya adalah Lazy  
+        // function* nomorGanjil (value) {
+        //     for(let i = 1; i <= value ; i++){
+        //         if (i % 2 == 1){
+        //             console.info(`Yield ${i}`); //kita berharap hasilnya mencetak console.info dulu baru hasil di bawah console yaitu yeild, rupany tidak
+        //             yield i;
+        //         }
+        //     }
+        // }
+
+        // Contoh Perbedaan Menggunakan Array dan ini adalah hasil yang ingin kita dapat seperti di atas
+        // Namanya adalah Eiger
+
+        // function nomorGanjilArray (value) {
+        //     const result = []
+        //     for(let i = 1; i <= value ; i++){
+        //         if (i % 2 == 1){
+        //             console.info(`Yield ${i}`); 
+        //             result.push(i);
+        //         }
+        //     }
+        //     return result;
+        // }
+
+        // const numbers = nomorGanjilArray(100);
+        // for (const number of numbers) {
+        //     console.info(number)
+        // }
+
+//  Contoh lazy Generator 
+        
+        function* nomorGanjil (value) {
+            for(let i = 1; i <= value ; i++){
+                if (i % 2 == 1){
+                    console.info(`Yield ${i}`); 
+                    yield i;
+                }
+            }
+        }
+        const numbers = nomorGanjil(100);
+        console.info(numbers.next().value);
+        console.info(numbers.next().value);
+        console.info(numbers.next().value);
+
+        const nama = (name) => {
+            
+        } 
+    
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

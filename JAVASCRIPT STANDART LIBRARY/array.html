@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+  </head>
+  <body>
+    <script>
+      {
+        // Array Loop
+        const array = ["Muhamad", "Nur", "Syami"];
+
+        //Pake Anonymous Function
+        array.forEach(function (value, index) {
+          console.log(` ${index}: ${value} `);
+        });
+
+        // Pake Arrow Function -> Jika ingin lebih ringkas
+        array.forEach((value, index) => {
+          console.log(` ${index}: ${value} `);
+        });
+
+        // Jika kita tidak butuh indexnya hanya valuenya saja
+        array.forEach((value) => console.log(value));
+      }
+
+      {
+        // Array Queue / antrian
+        /*  didalam struktur data terdapat tipe struktur data bernama
+                queue (antrian) .
+            -> dimana data yang akan masuk akan di posisikan di paling belakang
+            -> sedangkan data yang cepat keluar akan di posisikan di paling depan
+            -> mirip sekali dengan antrian atau istlah FIFO( first in first out)
+                siapa yang pertama kali masuk, dia juga yang pertama kali keluar
+            -> kita bisa mengimplementasikan sturktur data queue.
+                dengan bantuan function .push() untuk menambah data di belakang 
+                dan shift() untuk mengambil dan menghapus data paling depan.
+
+            */
+
+        const antrian = [];
+
+        antrian.push("Muhamad");
+        antrian.push("Nur");
+        antrian.push("Syami");
+
+        console.log(antrian.shift());
+        console.log(antrian.shift());
+        console.log(antrian.shift());
+        console.log(antrian.shift()); // data kosong jadi undifend
+      }
+
+      {
+        // Array Stack
+        /*
+            -> Struktur data stack(Tumpukan) adalah kebalikan dari stuktrur data queue
+                dimana aturannya seperti tumpukan kartu 
+            -> jika kita membayangkan,
+                saat kita memasukkan data, kita akan memasukannya keurutan paling belakang
+                ( atau di kartu paling atas).
+            -> dan Jika kita ingin mengambil data , kita akan mengambil data yang
+                paling atas dulu jika di bayangkan pada tumpukan kartu . 
+            -> stack ini sifatnya LIFO (last in first out)
+                siapa yang masuk terakhir kali , dia yang paling cepat keluar
+            -> untuk menambahan diurutan belakang , kita gunakan .push();
+            -   untuk mengambil dan menghapus data diurutan paling belakang itu .pop();
+            
+            */
+        const antrian = [];
+
+        antrian.push("Muhamad");
+        antrian.push("Nur");
+        antrian.push("Syami");
+
+        console.log(antrian.pop());
+        console.log(antrian.pop());
+        console.log(antrian.pop());
+        console.log(antrian.pop());
+      }
+
+      {
+        /*
+            Array Search adalah fitur untuk mencari data array tanpa menggunakan looping
+            ->  find(value => kondisi,contoh: value > 5); -> mencari data sesuai dengan kondisi
+            ->  findIndex( value => kondisi, contoh value > 4 ); -> mencari data index sesuai dengan kondisi
+            ->  includes(value)  -> mengecek apakah terdapat data didalam array tersebut
+            ->  indexOf(value)   -> mengecek posisi index dari data yang di beri di value
+            ->  lastIndexOf(value) -> mengecek posisi index di akhir dari data yang diberi di value
+            */
+
+        const angka = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
+        //                   nama ini, harus sama dengan ini. jika tidak maka error, jika yg pertama namanya value maka yg ke dua juga value.
+        //                       |        |
+        //                       V        V
+        console.log(angka.find((value) => value > 3)); // result 4,  saya akan mencari atau find ,dari value dimana kondisi valuenya/ nilainya lebih dari 3, dan yang pertama kali dapat langsung di cetak, walapun ada nilai setelah 4;
+        console.log(angka.findIndex((value) => value > 3)); // result 3, saya akan mencari atau find index keberapa, value dimana value atau nilai > 3, value > 3 kan 4, jadi 4 ini index ke berapa?, di mulai dari 0;
+        console.log(angka.includes(4)); // true , dia akan ngecek apakah di array angka ada data yang angka 4? ;
+        console.log(angka.indexOf(2)); // result 1, karena data dua berada di index 1
+        console.log(angka.lastIndexOf(5)); // result index ke 9, jika kita punya data 5 nya 2, maka yang akan di hitung itu angka 5 yang terakhir karena lastIndexOf, mencari yang paling terakhri
+      }
+
+      {
+        /*
+            Array Filter  adalah untuk memilih milih sesuai kondisi yang ada.
+            filter (value => boolean) : array
+            dia akan memfilter , dimana value nya itu boolean,dimana dari data yang kondisinya true, 
+            jika di true maka dia akan dibuat array baru
+            jika dia false maka tidak di tampilkan
+            */
+
+        const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        //kita ingin memfilter mana angka genap mana angka ganjil
+        //                       nama ini, harus sama dengan ini. jika tidak maka error, jika yg pertama namanya value maka yg ke dua juga value.
+        //                           |        |
+        //                           V        V
+        let ganjil = number.filter((value) => value % 2 === 1);
+        let genap = number.filter((value) => value % 2 === 0);
+
+        console.log(number);
+        console.log(ganjil);
+        console.log(genap);
+      }
+
+      {
+        /*
+        -> Array Transfrom adalah untuk merubah suatu bentuk array 
+        -> 1) .map(value =>  value.toUpperCase atau value.toLowerCase );  -> bisa kita rubah seperti, dari string menjadi integer, dari tulisan lowercase menjadi UPPERCASE
+                            dan dia akan menciptakan array baru.
+
+        -> 2) reduce(before, value => before + value -> jika ingin men total kan  array bentu angka
+                atau before + " " + value -> jika ingin mengabungkan array bentuk string) dia akan
+                menjadi kan sebuah string atau angka, tanpa di dalam array
+
+        -> 3)reduceRight sama seperti reduce, yang membedakannya adalah reduceRight
+            dimulai dari kanan ke kiri
+        
+        */
+
+        const name = ["Muhamad", "Nur", "Syami"];
+        //                          nama ini, harus sama dengan ini. jika tidak maka error, jika yg pertama namanya value maka yg ke dua juga value.
+        //                             |        |
+        //                             V        V
+        const mapUpperCase = name.map((value) => value.toUpperCase()); // artinya kita mengubah tulisan  dari data array name menjadi UPPERCASE / HURUF BESAR SEMUA
+        console.log(mapUpperCase);
+
+        const reduce = name.reduce((before, value) => before + " " + value);
+        /*
+        Penjelasan : 
+            reduce(); -> di mulai dari array kiri kanan;
+            1) "Muhamad" akan masuk ke before dan "Nur" akan masuk ke value 
+            2) kemudian before + " " + value -> maksudnya kita akan gabung before +" " +value 
+                "Muhamad" + " " + "Nur"
+                kemudian menjadi  "Muhamad Nur", kemudian"Muhamad Nur" akan masuk ke parameter before.
+            3) jadi sekarang "Muhamad Nur " masuk ke before dan "Syami " masuk ke value
+            4) kemudian before + " " + value, -> maksudnya kita akan gabung  before + " "+ value
+                "Muhamad Nur" + " " + "Syami"
+                menjadi hasilnya "Muhamad Nur Syami". dan seterusnya jika ada data lagi 
+        */
+
+        //const reduce = name.reduce(function(before , value) {return before + " " + value}); -> Jika pakai anonymous function
+        // console.log(reduce);
+
+        // contoh lain reduce
+        const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        const totalReduceNumber = number.reduce(
+          (nilaiSebelumnya, nilaiSesudahnya) =>
+            nilaiSebelumnya + nilaiSesudahnya
+        );
+        console.info(totalReduceNumber);
+
+        const reduceRight = name.reduceRight(
+          (nilaiAwalDariKanan, nilaiSesudahnya) =>
+            nilaiAwalDariKanan + " " + nilaiSesudahnya
+        );
+        console.log(reduceRight);
+        /*
+            Penjelasan : reduceRight() ->  penjelasanya sama seperti reduce tapi dimulai dari kanan ke kiri;
+            1) "Syami" akan masuk ke parameter nilaiAwalDariKanan, dan "Nur" masuk ke nilaiSesudahnnya
+                kemudian di gabungkan menjadi "Syami Nur"
+            2) kemudian "Syami Nur" masuk keparameter nilaiAwalDariKanan, dan "Muhamad " masuk ke
+                parameter "nilaiSesudahnya", dan di gabungkan menjadi "Syami Nur Muhamad";
+        */
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Of</title>
+</head>
+<body>
+    
+    <script>
+
+// Menggunakan Array
+        const nama = ["Muhamad" , "Nur", "Syami"];
+
+        for (const index of nama ){
+            document.writeln(`<p>${index}</p>`)
+        }
+
+        // Menggunakan String
+        const fullName = "Muhamad Nur Syami";
+
+        for (const character of fullName ){
+            document.writeln(`<p>${character}</p>`)
+        }
+
+        // Jika di paksakan dengan object,maka akanerror di console 
+
+        const name = {
+            firstName :"Syami"
+        }
+        for (const property of name ){
+            document.writeln(`<p>${property} </p>` )
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element Create</title>
+  </head>
+  <body>
+    <div id="content" class="content">
+      <!-- h1 nya akan masuk kedalam div ini -->
+    </div>
+    <script>
+      const content = document.getElementById("content");
+      //membuat h1
+      const title = document.createElement("h1"); // membuat element h1
+      title.textContent = "Belajar Javascript"; // menambahkan kalimat di element h1
+      content.appendChild(title); // tujuannya untuk menambahkan element h1 ke dalam div.
+
+      const description = document.createElement("p");
+      description.textContent = "Selamat Belajar Javascript DOM";
+      content.appendChild(description);
+
+      const author = document.createElement("h3");
+      content.append("Eko Kurniawan Khannedy", author); // cara lain untuk memasukan data
+    </script>
+  </body>
+</html>

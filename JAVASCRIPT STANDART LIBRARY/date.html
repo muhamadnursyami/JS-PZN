@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date</title>
+  </head>
+  <body>
+    <script>
+      /*
+      ->  static method date/ tanggal :
+
+          1) new Date(); -> membuat waktu saat ini , pada saat kita buat.
+          2) new Date(tahun, bulan , tanggal) -> jika ingin menuntukan tahun, bulan dan tanggal.
+          3) new Date(tahun, bulan, tanggal?, jam?, menit?, detik?, milisecond?)
+          -> jika kita ingin menentukan tahun, bulan, jam, menit detik , milisecond
+              tanya tanya (?) artinya itu opsional boleh di buat atau tidak.
+          4) new Date (masukan timestampnya)
+          -> jika kita ingin mengkonversikan tanggal dari  epoch atau unixtamp( ini berupa number) ke tanggal.
+
+
+      ->  epoch dan unix timescamp
+
+          1) untuk mendapatkan waktu saat ini dalam epoch &unix timestamp, kita bisa menggunakan
+              Date.now ();
+          2) Jika kita ingin mengubah object date ke epoch & unixtimestamp, kita bisa menggunakan
+              getTime();
+
+
+
+      -> Parsing Date
+
+          1)Kita juga bisa melakukan parsing menbuat date dari string  meggunakan method
+              Date.parse(valuenya).
+          2) format stringnya harus YYYY-MM-DDTHH:mm:ss.sssZ  -> kalo milisecond itu pake titik (.), sedangkan yang lain pake titik dua (:)
+              YYYY = tahun,
+              MM = bulan,
+              DD = hari,
+              T = pemisah tanggal dan waktu,
+              HH = jam,
+              mm = menit ,
+              ss = detik,
+              sss= milisecond
+              Z = TimesZone
+
+          3) jika kita hanya ingin membuat date yang berisi tanggal saja , kita cukup gunakan
+              YYYY-MM-DD
+          4) Jika dengan tanggal dan waktu , gunakaan
+              YYYY-MM-DDTHH:mm:ss.sss
+          5) Jika dengan tanggal, waktu dan timesZone gunakan
+              YYYY-MM-DDTHH:mm:ss.sssZ
+
+          -> hasil parsing itu bukan object date melainkan UnixTimesTamp yang berupa number
+
+
+
+
+
+          */
+
+      {
+        //   Create Date
+        const date1 = new Date();
+        console.info(date1);
+
+        const date2 = new Date(2020, 03, 01);
+        console.info(date2);
+
+        const date3 = new Date(2018, 02, 04, 15, 30, 40, 123); // tidak tampak diconsole milisecond nya tetapi di ada sebenarnya
+        console.info(date3);
+
+        const date4 = new Date(1653354215741);
+        console.info(date4);
+      }
+
+      {
+        // Epoch dan Unixtimestamp
+
+        const date1 = Date.now();
+        console.info(date1);
+
+        const date2 = new Date(date1);
+        console.info(date2);
+
+        const date3 = new Date(1653354938537);
+        console.info(date3.getTime());
+
+        const date4 = new Date(2020, 03, 01);
+        console.info(date4.getTime());
+      }
+
+      {
+        //Date Parsing
+        // Jika kita ingin melakukan parsing , membuat date mengunakan string/ manual
+        const parse = Date.parse("2018-08-14T08:45:45.123+07:00"); //+07:00 -> maksudnya, plus 7 jam dari WIB KE  UTC yang berada di london. UTC ITU +00:00
+        console.info(parse);
+
+        const parse1 = Date.parse("2019-09-19");
+        console.info(parse1);
+
+        const parse2 = Date.parse("2019-09-19T08:45:45.123"); // ini timesZone nya akan mengikuti timezone yang di laptop masing-masing.
+        console.info(parse2);
+
+        const date = new Date(parse);
+        console.info(date);
+      }
+
+      {
+        /*
+        Getter dan Setter di date, dimana kita mengunakan method untuk mendapatkan informasi date dan mengubah informasi date 
+        */
+        //  ini contoh untuk mengambil data date yang pada saat ini .
+        const date = new Date();
+        console.info(date.getFullYear());
+        console.info(date.getMonth());
+        console.info(date.getDate());
+        console.info(date.getHours());
+        console.info(date.getMinutes());
+        console.info(date.getSeconds());
+        console.info(date.getMilliseconds());
+
+        //Juga kita bisa mengubah tahun, bulan tanggal, dan waktu
+
+        const year = date.setFullYear(2021);
+        const month = date.setMonth(01);
+        const tanggal = date.setDate(14);
+        console.info(date.getFullYear());
+        console.info(date.getMonth());
+        console.info(date.getDate());
+        console.info(date.getHours());
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist Dokumentasi</title>
+</head>
+<body>
+    <h1>TodoList</h1>
+    <!-- kolom inputan -->
+    <form name="todoForm">
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="todo">Todo : </label></td>
+                    <td><input type="text" name="todo" id="todo"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Add"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <!-- h1 untuk menambah spasi -->
+    <h1></h1>
+    <!-- ini hasil yang di inputkan -->
+    <table>
+        <thead>
+            <tr>
+                <th>Filter :</th>
+                <th><input type="text" name="search" id="search"></th>
+            </tr>
+        </thead>
+        <tbody id="todolistBody">
+            <!-- membuat element seperti ini -->
+            <tr>    
+                <td><input type="submit" value="Done"></td>
+                <td>Todo Descripstion</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+       
+        // DISARANKAN UNTUK DIBAYANG SETIAP, ALUR PEMBUATAN KHUSUS DALAM ALUR PEMBUATAN TR DAN TD
+        //PENJELASAN LEBIH LENGKAP SILAHKAN LIHAT FILE HTML FORM DI FOLDER JAVASCRIPT DOM
+        // LOGIC PEMBUATAN TODOLIST
+        //  -> BAGIAN UNTUK MENGAMBIL NILAI YANG SUDAH DI INPUT
+        // kita buat array untuk menampung data yang di inputkan
+        const todolist = [
+            "Javascript Dasar",
+            "JavascriptDOM",
+            "Javascript Object Oriented",
+
+        ];
+
+        const searchInput = document.getElementById("search");
+        searchInput.onkeyup =function (){
+            displayTodolist();
+        }
+        searchInput.onkeydown =function (){
+            displayTodolist();
+        }
+
+        // mengambil input text, kemudian kasih aksi on submit
+        document.forms ["todoForm"].onsubmit = function(event){
+            event.preventDefault();
+            // kita buat dulu variabel untuk mengambil data todo dan menggunakan.value, supaya kita ambil nilainya
+            const todo = document.forms ["todoForm"] ["todo"].value;
+            //kita push data todo ke dalam variabel todolist;
+            todolist.push(todo);
+            // mereset data yang sudah kita inputkan
+            document.forms ["todoForm"].reset();
+
+            console.info(todolist);
+            displayTodolist();
+        }
+        // index ini didapat dari pemanggilan function remove button di function addTodolist.
+        function removeButton(index){
+            // untuk menghapus todolist sederhananya kita harus menghapus index data const todolist, menggunakan splice().
+            // maksudnya, yang mana nih, todolistnya yang mau di hapus, kasih index,  dan 1 itu, maksudnya
+            // mau berapa record yang di hapus, kan kita mau ketika di klik donenya hanya satu data saja yang
+            // dihapus
+            todolist.splice(index, 1);
+            // terus selanjutnya jika sudah kita hapus, kemudian kita ingin melihat efek penghapusannya
+            // kita harus panggil display todolistnyalagi
+            displayTodolist();
+
+        }
+        // index dan todo ini diambil dari function display.
+        function addTodoList (index,todo){
+             //setelah  index ke 0 kita dapatkan data , kita ingin membuat element seperti di tbodies 
+                // yang ada tr dan td, yang isinya tombol done dan text discription
+                // membuat element tr
+                const tr = document.createElement("tr");
+                // setelah itu kita buat element tag td untuk tombol done.
+                const tdButton = document.createElement("td");
+                //kemudian kita masukan tdButton itu kedalam tag tr sehingga menjadi 1 row, mirip seperti button done dan text description  di tbodies.
+                // fungsi .appendChild untuk memasukan data ke dalam tr;
+                tr.appendChild(tdButton);
+                //kemudian kita buat element input yang typenya button 
+                const buttonDone = document.createElement("input");
+                // masukan type dan value buttonDone
+                buttonDone.type="button";
+                buttonDone.value="Done";
+                // kemudian kita masukan element tag input kedalam  td nya button, yaitu tdButton.
+                tdButton.appendChild(buttonDone);
+                // selanjutnya kita buat tdText seperti text description untuk menampilkan hasil.
+                // pertama tama buat dulu tag element td
+                //kemudian , pada saat tombol done di clik ,kita mau menghapus elemenya.
+                buttonDone.onclick = function (){
+                    // kita buat dulu function remove dan kita kan, click button nya sesuai index
+                    // maka masukan indexnya juga
+                    // index ini di ambil dari paramter si function addTodolist
+                    removeButton(index);
+                }
+                const tdText = document.createElement("td");
+                //kemudian kita masukan tdText itu dengan data yang ada di const todo pada saat pengiterasian
+                tdText.textContent = todo;
+                // kemudian kita masukan tdText yang berisi tag td kedalam tag tr
+                tr.appendChild(tdText);
+                // kita ambil id dari tag tbodies, untuk di tampilkan di browser.
+                const todolistBody = document.getElementById("todolistBody");
+                // kemudian tambahkan tag yang telah kita buat, bernama const tr kedalam variabel todolistBody
+                // untuk ditampilkan di browser
+                todolistBody.appendChild(tr);
+        }
+        // fungsi digunakan untuk menghapus element tombol button done dan text description. 
+        // pada saat browser baru dibuka. tanpa kita submit dulu
+        displayTodolist(); 
+        // -> BAGIAN UNTUK MENAMPILKAN TODOLIST YANG SUDAH DI INPUT
+        // membuat function untuk menampilkan todolist
+        function displayTodolist (){
+            // function clear ini untuk menghapus semua element di id todolist body, dengan melakukan submit dulu.
+            clear();
+            // kemudian kita iterasi data dari  array const todolist, menggunakan foR i untuk mengambil indexnya.
+            for (let i = 0; i < todolist.length; i++) {
+                // kemudian setiap index di iterasi,  kita masukan di kedalam variabel,
+                // setiap index kita masukan datanya ke const todo
+                const todo = todolist[i]; // misalkan iterasi pertamanya, index ke 0, kemudian data ke 0 kita masukan dalam variabel const todo;
+                // kita ambil form searchnyanya masukan dalam varibael searchText
+                // kita ambil valuenya, kemudian nilai yang kita cari itu di form filter
+                // kita kecil , artinya kita jika user input huruf besar, dia akan dikecilkan
+                const searchText = document.getElementById("search").value.toLowerCase();   
+                // kemudian const todo yang kita iterasi itu, datanya kita lowercasenya sepuya
+                // kecil semua, kemudia kita pakai function includes(). artinya, mengandung kata tertentu, jadi
+                //  data todo kita kecilkan hurufnya kemudian apakah todo itu mengandung nilai yang
+                // diketik oleh user di filter, bagaimana  program bisa tau ada yang ketik
+                // itu berasal dari variabel searchInput.
+                if(todo.toLowerCase().includes(searchText)){
+                    // jika dia tidak ada,tidak akan di tampilkan
+                    // jika ada maka, data todo di jadikan argumen, kemudia akan dikirim
+                    // ke functionaddTodolist.
+                    // ini juga kita ambil indexnya untuk menghapus button donenya
+                    addTodoList(i,todo);
+                }
+            }
+        }
+
+        // Selanjutnya , ada kasus dimana, pada saat kita sudah menginputkan data yang pertam
+        // kemudian kita masukan data ke 2, yang terjadi akan, data yang pertama tadi keluar
+        // lagi berbarengan dengan data yang ke 2, jadi hasilnya seperti ini
+        //: eko(data1), input ke2 : eko,kurniawan.
+        // kenapa seperti ini karena fornya iterasi dari awal lagi
+        // untuk itu kita bisa buat semua fungsi untuk itu,
+        function clear (){
+            // ambil dulu id todolist body
+            const todolistBody = document.getElementById("todolistBody");
+
+            while(todolistBody.firstChild){
+                todolistBody.removeChild(todolistBody.firstChild);
+            }
+        } 
+
+
+
+        
+    </script>
+</body>
+</html>

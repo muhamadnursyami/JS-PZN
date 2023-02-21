@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Return Value</title>
+</head>
+<body>
+    
+    <script>
+        // Membuat function dengan parameter dan return value
+        function sayHello(firstName,lastName ){
+            const say = `Hello ${firstName} ${lastName}`;
+            return say;
+        }
+        // Memanggil function dan menangkap return valuennya
+
+        const result = sayHello("Muhamad", "Syami");
+        document.writeln(`<p> ${result}</p>`)
+        
+
+        function getFinalValue (value) {
+            if (value > 90){
+                return "A";
+            }else if (value > 80){
+                return "B";
+            }else if (value > 70 ){
+                return "C";
+            }else{
+                return "D";
+            }            
+        }
+
+        const finalValue = getFinalValue (76);
+        document.writeln(`<p> ${finalValue} </p>`)
+        
+        
+        // Menghentikan return 
+
+        function isContains (array ,nilaiYangDicari){
+        
+            for (const element of array){
+                    console.info(`Iterasi Element ${element}`);// Contohnya seperti Ini 
+                if (element === nilaiYangDicari){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        const array = [1,23,4,5,6,6,8,8,99]; 
+        /*Nilai 6 kan ada dua , apakah  nilai enam di depan diambil atau nilai belakang, untuk mengecek nya
+        menggunakan console.info di elemennya.
+        */
+        const nilaiYangDicari = 6;
+        const hasilNilai = isContains(array , nilaiYangDicari);
+        document.writeln (`<p>${hasilNilai} </p>`)
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

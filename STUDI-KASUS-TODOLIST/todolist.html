@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist</title>
+  </head>
+  <body>
+    <h1>TodoList asli</h1>
+
+    <form name="todoForm">
+      <table>
+        <tbody>
+          <tr>
+            <td><label for="todo">Todo : </label></td>
+            <td><input type="text" name="todo" id="todo" /></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Add" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+    <h1></h1>
+    <form name="filterSubmit">
+      <table>
+        <thead>
+          <tr>
+            <th>Filter :</th>
+            <th>
+              <input type="text" name="search" id="search" /><input
+                type="submit"
+                id="reset"
+                value="X"
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody id="todolistBody">
+          <tr>
+            <td><input type="submit" value="Done" /></td>
+            <td>Todo Descripstion</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+    <script>
+      const todolist = [
+        "Belajar Javascript Dasar",
+        "Belajar Javascript DOM",
+        "Belajar Javascript OOP",
+      ];
+
+      displayTodolist();
+      //aksi ketika di submit
+      document.forms["todoForm"].onsubmit = function (event) {
+        event.preventDefault();
+        const todo = document.forms["todoForm"]["todo"].value;
+        todolist.push(todo);
+        document.forms["todoForm"].reset();
+        console.info(todolist);
+        displayTodolist();
+      };
+      // aksi ketika pada saat  form filter di ketik
+      const searchInput = document.getElementById("search");
+      searchInput.onkeyup = function () {
+        displayTodolist();
+      };
+      searchInput.onkeydown = function () {
+        displayTodolist();
+      };
+
+      document.forms[filterSubmit].onsubmit = function () {
+        document.forms[filterSubmit].reset();
+      };
+
+      // menampilkan TODOLIST dan mengecek data yang di ketik di form filter,  apakah ada didalam todolistnya,
+      // jika ada panggil addTodolist
+      function displayTodolist() {
+        clear();
+        for (let i = 0; i < todolist.length; i++) {
+          const todo = todolist[i];
+          const searchText = document
+            .getElementById("search")
+            .value.toLowerCase();
+          if (todo.toLowerCase().includes(searchText)) {
+            addTodoList(i, todo);
+          }
+        }
+      }
+
+      function removeButton(index) {
+        todolist.splice(index, 1);
+        displayTodolist();
+      }
+
+      // menambah atau menipulasi data, jika ada penambahan data, dengan membuat tombol button dan hasil inputan
+      function addTodoList(index, todo) {
+        const tr = document.createElement("tr");
+        const tdButton = document.createElement("td");
+        tr.appendChild(tdButton);
+        const buttonDone = document.createElement("input");
+        buttonDone.type = "button";
+        buttonDone.value = "Done";
+        tdButton.appendChild(buttonDone);
+        // saat button Done di clik
+        buttonDone.onclick = function () {
+          removeButton(index);
+        };
+        const tdText = document.createElement("td");
+        tdText.textContent = todo;
+        tr.appendChild(tdText);
+        const todolistBody = document.getElementById("todolistBody");
+        todolistBody.appendChild(tr);
+      }
+
+      // untuk menghapus setiap fistchild dimiliki pada tag tbody.
+      function clear() {
+        const todolistBody = document.getElementById("todolistBody");
+        while (todolistBody.firstChild) {
+          todolistBody.removeChild(todolistBody.firstChild);
+        }
+      }
+    </script>
+  </body>
+</html>

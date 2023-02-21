@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penggunaan Alias</title>
+  </head>
+  <body></body>
+  <script type="module">
+    import { company, Human, names } from "./multipleExport1.js";
+    import {
+      company as perusahaan,
+      Human as manusia,
+      names as nama,
+    } from "./multipleExport2.js";
+
+    company("Eko"); // dari file multipleExport1
+    perusahaan("Eko"); // dari file multipleExport2
+    console.log(names); // dari file multipleExport1
+    console.log(nama); // dari file multipleExport2
+    const a = new Human("Muhamad Nur Syami"); // dari file multipleExport1
+    const b = new manusia("Muhamad Nur Syami"); // dari file multipleExport2
+    a.sayHuman("Perempuan"); // dari file multipleExport1
+    b.sayHuman("Perempuan"); // dari file multipleExport2
+  </script>
+</html>

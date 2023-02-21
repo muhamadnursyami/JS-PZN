@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Anonymous</title>
+</head>
+<body>
+
+    
+    <script>
+
+//  Anonymous Function di Variable
+
+let say = function (name){
+    document.writeln(`<p> Hello ${name}</p>`);
+}
+say("Sami");
+say("Eko Kurniawan Khanedy");
+
+// Anonymous Function di Parameter
+
+function namaKota (nilaiArgumenYangdikirimOlehParameter){
+    nilaiArgumenYangdikirimOlehParameter("Kota Tanjungpinang");
+    
+}
+namaKota(function(kota){
+    document.writeln(`<p> Hello ${kota}</p>`);
+});
+
+
+
+
+
+
+    </script>
+</body>
+</html>

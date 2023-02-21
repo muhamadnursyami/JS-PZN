@@ -1,0 +1,13 @@
+Event 
+ -> saat kita membuat callback function untuk Handler ,Kita juga bisa menerima
+    data event yang memicu event itu terjadi.
+->  Data event tersebut berbeda beda tergantung jeni Event nya , contoh 
+    kalo untuk clik data eventnya berupa MouseEvent
+->  MouseEvent ini terdapat seperti property gitulah
+    -> yang isinya kita bisa dapatkan letak mouse dari sumbu X dan Sumbu X 
+        Seperti contoh di file event.contoh1.html
+
+    -> itu adalah contoh penggunaan dari property yang ada di MouseEvent.
+    -> Dan banyak lagi silahkan cek di documentasi nya di google.
+
+ 

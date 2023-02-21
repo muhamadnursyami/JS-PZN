@@ -1,0 +1,16 @@
+->  Aggregat adalah penggabungan beberapa
+    module menjadi satu agar penggunaanya lebih sederhana.
+
+->  Karena Jika kita, sudah punya banyak module , maka
+    akan banyak kode yang di butuhkan , dan kita harus
+    sebutkan nama module tersebut tiap kali
+    ketika import
+
+->  masalah ini kita bisa selesaikan dengan menggunakan Aggregat Modules.
+->  Dengan anggregat kita bisa membuat module aggregat , yang isinya
+    menggabungkan export dari module lain.
+
+-> cara nya menggunakan perintah :
+    export{person} from "./script/person";
+    export{sayhello, sayGoodbye} from "./script/sayhello";
+    export{sum} from "./script/sum";

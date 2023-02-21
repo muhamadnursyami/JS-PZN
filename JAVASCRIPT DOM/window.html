@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window</title>
+  </head>
+  <body>
+    <p id="content"></p>
+    <p id="location"></p>
+    <script>
+      //kita ambil id content kemudian kita masukan dalam sebuah variabel content;
+      const content = document.getElementById("content");
+      // kita mabil id location kemudia kita masukan ke dalam sebuah variabel locationPragraph
+      // catatan : jika kita menggunakan window ada beberapa method misalkan window.location itu
+      // berubah menjadi location, jadi ita tidak bisa memberikan nama location. karena sudah di ambil
+      // oleh window,coba aja kalo nggak percaya, rubah di const locationPragraph menjadi location.
+      const locationPragraph = document.getElementById("location");
+
+      const height = window.screen.height;
+      const width = window.screen.width;
+      const url = window.location;
+
+      content.textContent = `width :${width} height ${height}`;
+      locationPragraph.textContent = `location : ${url}`;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimen function clear</title>
+</head>
+<body>
+    <form name="formTodo">
+        <table>
+            <tr>
+                <td> <label for="textTodo">Todo : </label></td>
+                <td><input type="text" id="inputTodo" name="inputTodo" placeholder="masukan nama"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="add"></td>
+            </tr>
+        </table>
+    </form>
+
+    <table>
+        <tbody id="menampilkanData">
+            <tr>
+                <td><input type="submit" value="done" ></td>
+                <td>Text Descripstion</td>
+            </tr>
+        </tbody>
+    </table>
+   
+   <script>
+        
+        const nampungData = [
+            "Belajar Javascript DOM",
+            "Belajar Javascript OOP"
+        ];
+            document.forms ["formTodo"].onsubmit = function (event){
+                event.preventDefault();
+
+                const inputTodo = document.forms ["formTodo"] ["inputTodo"].value;
+                nampungData.push(inputTodo);
+                document.forms ["formTodo"].reset();
+                console.info(nampungData);
+                nampilData();
+            }
+            clear();
+        function nampilData(){
+            //kita akan manipulasi tag htmlnya, ketika di submit, kita akan buat tag tr dan td di tbody,
+            // menggunakan DOM
+            // buat dulu tr dan tdnya sebagai ruang lingkupnya atau margin atau pagar untuk button dan descpritonya.
+            clear();
+            for (let i= 0; i < nampungData.length; i++) {
+                const menambahDataSatuPerSatu = nampungData[i];
+                const tr = document.createElement("tr");
+                const tdButton = document.createElement("td");
+                tr.appendChild(tdButton);
+                const button = document.createElement("input");
+                button.type ="button";
+                button.value ="Done";
+                tdButton.appendChild(button);
+                const tdText = document.createElement("td");
+                tdText.textContent = menambahDataSatuPerSatu;
+                tr.appendChild(tdText);
+                const menampilData = document.getElementById("menampilkanData");
+                menampilData.appendChild(tr);
+            }
+        }
+
+        function clear(){
+            const todolistBody = document.getElementById("menampilkanData");
+            while(todolistBody.firstChild) {
+                todolistBody.removeChild(todolistBody.firstChild);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Default Class</title>
+  </head>
+  <body></body>
+  <script type="module">
+    // ini namanya bebas karena default seakan akan tidak punya nama;
+    import classPerson from "./scripts/default-class.js";
+    // // ini sama aja dengan ini
+    // import { default as classPerson } from "./scripts/default-class.js";// penggunaan alias
+
+    const person = new classPerson("Syami");
+    person.sayHai();
+  </script>
+</html>

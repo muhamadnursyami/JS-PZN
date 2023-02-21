@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Mengirim dengan Format JSON</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        username
+        <input type="text" name="username" id="username" />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" name="password" id="password" />
+      </label>
+      <br />
+      <input type="button" name="login" id="login" value="Login" />
+      <h1 id="reponse"></h1>
+    </form>
+    <script>
+      function doLogin() {
+        // membuat Ajax
+        const ajax = new XMLHttpRequest();
+        ajax.open("POST", "https://eo5848pozghh6wj.m.pipedream.net");
+        // pada saat ajax di eksekusi/ onload dan selesai, maka kita masukan ajax,reponseTextnya ke dalam element h1, untuk menampilkan data yang sukses di load
+        ajax.onload = function () {
+          const reponse = document.getElementById("reponse");
+          reponse.innerHTML = ajax.responseText;
+        };
+        // content type itu seperti tipe data
+        // kita kasih tau reques header itu content typenya adalah application/json karena data kita yang ada dikirm itu kita convert dari sting ke json, jika data yang kita punya itu video maka kasih tau content typenya video
+        ajax.setRequestHeader("Content-Type", "application/json");
+
+        //buat object
+        const json = {
+          username: document.getElementById("username").value,
+          password: document.getElementById("password").value,
+        };
+
+        ajax.send(JSON.stringify(json)); // kemudian kita kirim object json berupa object/ stirng menjadi json.
+      }
+      // kita ambil id login kemudia kita tambah event onclick , pada saat button login di click maka call backny itu  function doLogin tanpa tanda kurung.
+      document.getElementById("login").onclick = doLogin;
+    </script>
+  </body>
+</html>

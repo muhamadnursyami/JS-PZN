@@ -1,0 +1,31 @@
+EVENT HANDLER
+
+->  Node atau element, attribut dll, mempunyai kemampuan
+    untuk bereaksi terhadap suatu kejadian, misalkan kejadian ketika di klik
+    , atau mouse diatas node tersebut dan lain;
+->  Ada banyak kejadian yang bisa kita buat , kejadian tersebut kita kenal
+    dengan sebutan Even Handler;
+-> ada 2 cara kita menambahkan Even Handler ke Node :
+    1) menggunakan Event Target ;
+    2) menggunakan Global Event Handler;
+
+->  Event Target adalah kontrak yang bisa digunakan untuk element, attribut dll.
+    -> menambahkan Even Handler menggunakan Method :
+        -> .addEventListener();  
+    -> menghapus Even Listener yang sudah ada :
+        -> .removeEventLis tener();
+
+-> Even Target merupakan parent class dari Node , artinya semua Node memiliki kemampuan dari Even Target
+-> Kita bisa menggunakan method .addEventListener(type, callback);
+    -> type adalah event ,event nya itu bisa misalnya :   click, atau yang lain ada banyak;
+    -> untuk callback ini adalah function : kita bisa menggunakan anonymous function / arrow function;
+
+
+-> Global Event Handler
+    -> adalah saat kita ingin menambah event  kita bisa menggunakan properti event Handler
+    -> contoh salah satunya :
+        GlobalEventHandler.onclick -> properti onclick 
+        -> ini adalah  representasi addEventListenernya yaitu  click .
+
+-> Perbedaan addEventListener dan GlobalEventHandler
+    

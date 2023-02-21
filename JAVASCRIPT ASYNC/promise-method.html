@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise Method</title>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td>Id :</td>
+          <td id="id"></td>
+        </tr>
+        <tr>
+          <td>Name :</td>
+          <td id="name"></td>
+        </tr>
+        <tr>
+          <td>Price :</td>
+          <td id="price"></td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      function getProduct() {
+        return new Promise(function (resolve, reject) {
+          const ajax = new XMLHttpRequest();
+          ajax.open("GET", "api/product.json");
+          ajax.onload = function () {
+            if (ajax.status == 200) {
+              resolve(ajax.responseText);
+            } else {
+              reject(`Error Get Product with Response ${ajax.status}`);
+            }
+          };
+          ajax.send();
+        });
+      }
+
+      // Kemudian kita panggil getProductnya dan kita ambil datanya
+      getProduct() // jika kita panggil getProduct aja, maka hasil nya akan promise, jadi jika kita ingin mengambil value nya kita bisa gunakan then();
+        // bisa juga seperti ini selain cara yang  dibawah
+        // .then(function (response) {
+        //   const json = JSON.parse(response);
+        //   document.getElementById("id").textContent = json.id;
+        //   document.getElementById("name").textContent = json.name;
+        //   document.getElementById("price").textContent = json.price;
+        // })
+        // cara ini menunjukan bahwa then bisa untuk konversi.
+        .then(function (response) {
+          // parameter response ini di ambil dari nilai resolve (ajax.response.Text) di promise, dan nama parameter nya bebas yang penting sesuai dengan content yang di bahas.
+          return JSON.parse(response); // jika kita ingin menggunakan then(), lebih dari 1, maka kita harus gunakan return, dan secara otomatis, untuk then pertama itu dinilai sebagai konversi data, jadi bentuk nya masih promise dan untuk mendapatkan datanya kita harus buat then lagi.
+        }) // tidak ada tanda titik koma di setiap method then
+        .then(function (json) {
+          document.getElementById("id").textContent = json.id; // json.id ini di ambil dari response yg sudah di konversikan bentuk nya object, dimana datanya seperti file product.json, kita ambil property nya yaitu id.
+          document.getElementById("name").textContent = json.name;
+          document.getElementById("price").textContent = json.price;
+        })
+        // untuk menanganan error
+        .catch(function (error) {
+          // parameter error ini di ambil dari reject di promise.
+          document.getElementById("id").textContent = error;
+          document.getElementById("name").textContent = error;
+          document.getElementById("price").textContent = error;
+        })
+        .finally(function () {
+          console.log("Program Sudah di Jalankan!");
+        });
+    </script>
+  </body>
+</html>

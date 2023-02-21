@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+
+<script>
+
+// Nested Function
+// Contoh Function ini sebagai demo atau pembeda jika mengggunakan closure
+// function pertama (valuePertama){
+//     const nama = "Muhamad Nur Syami"
+//     console.info(` ${valuePertama}`);
+    
+//     function kedua(valueKedua) {
+//         console.info(`Hello ${nama}`);
+//         return valuePertama + valueKedua;
+//     }
+//     return kedua;
+
+// }
+
+// pertama(2);
+
+
+// Closure
+
+function createAdder (value){
+    const nama ="Sami"; // inikan di dalam local scope jika sudah return add maka di const nama jadi global scope 
+
+    function add(param){
+        console.info(`Hello ${nama}`); // si function add bisa mengakses variabel nama, tetapi tidak untuk parameter create adder karena sudah beda scope
+
+        return value + param;
+    }
+    return add; // Ini kunci agar kita bisa menjadikan function add menjadi global scope
+}
+
+// Kita Harus masukan si function createAdder kedalam Variabel
+const addTwo = createAdder(2);
+// // Ini seakan-akan/ atau bisa dibayangkan, maksudnya ketika kita sudah return add  artinya sih function add akan menjadi seperti ini dari local scope menjadi global scope:
+// const nama ="sami" //menjadi global scope dari local scope
+// function addTwo (param){
+//     console.info(`Hello ${nama}`);// Hello Sami
+//     return 2 + param; // 2 disini merupakan parameter dari creareAdder yang kita panggil tadi
+    
+// }
+
+/* gunanya memasukan function kedalam variable untuk menduplikat function menjadi variabel, tetapi dalam kasus ini
+    hanya area yang di returnkan , contoh nya di sini adalah const nama dan function add, jadi yang data yang 
+    dimasukkan kedalam  const addtwo adalah functionya add dan const nama, semoga bisa mengerti  
+*/
+console.info(addTwo(10));
+console.info(addTwo(20));
+
+
+
+//  Punya MAS Eko
+// function createAdder(value){
+//     const owner = "Eko";
+
+//     function add (param){
+//         console.info (owner);
+//         return value + param;
+//     }
+
+//     return add;
+// }
+
+// const addTwo = createAdder(2);
+// console.info(addTwo(10));
+// console.info(addTwo(20));
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

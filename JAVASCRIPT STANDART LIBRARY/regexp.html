@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular Expresion</title>
+  </head>
+  <body>
+    <script>
+      {
+        // Cara cara membuat Regular Expresion
+
+        let regex1 = /eko/; // bacanya, saya akan mencari pola dengan nama eko.
+        let regex2 = new RegExp("eko");
+        let regex3 = new RegExp(/eko/);
+      }
+
+      {
+        // RegExp Instance Method.
+        /*
+        .exec(value);   -> adalah eksekusi regex , jika menemukan  data sesuai pola, maka kembalikannya result, jika tidak  maka null.
+        .test(value);   -> jika kita tidak mau mengembalikan data dalam bentuk string, tapi dalam bentuk boolean ,
+                            .test(value); adalah eksekusi regex , jika menemukan  data sesuai pola ,
+                            maka return  true ,jika tidak maka false.
+        */
+
+        const name = "muhamad nur muhamad syami";
+        // const name1 = "eko kurniawan eko khannedy";
+        const regex = /nur/;
+
+        const exec = regex.exec(name);
+        console.info(exec);
+
+        const test = regex.test(name);
+        console.info(test);
+
+        //contoh jika nilai salah
+        console.info(regex.exec("ini nilai salah"));
+        console.info(regex.test("ini nilai salah"));
+      }
+
+      {
+        /*
+        -> Regex Modifier adalah modifier untuk  mengubah sifat  cara pencarian,
+            secara defult, regex itu case sensitive, jika kita mencari regexnya
+            nilai nya nur, n nya kecil, tetapi di datanya n nya BESAR, maka itu tidak dapat.
+        -> Modifier
+          -> i -> tidak peduli datanya huruf besar atau huruf kecil , artinya regex yang defaultnya
+                  sensitiv menjadi incase sensitive.
+          -> g -> secara default ,jika dalam pencarian langsung ketemu nilainya, itu langsung berhenti
+                  pencariannya, walaupun data misalnya eko, ada 5 kata, tetap yang di tampilkan hanya satu
+                  jadi jika kita ingin mengambil 5 kata setelahnya ,kita bisa mencari secara global,
+                  secara seluruh, kita bisa menggunakan modifier g, artinya global.
+          -> m -> secara default ,kadang kadang charakter itu di string itu ada enter atau multiline
+                      |
+                      v
+        */ //        pertama
+        const name = "eko kurniawan\n Eko khannedy\nEdi Kurniawan";
+        const regex1 = /eko/gi; // modifiernya
+        const regex2 = /Kurniawan/gi;
+
+        let result;
+
+        while ((result = regex1.exec(name)) !== null) {
+          console.info(result);
+        }
+        /*penjelasan=  jika regex tidak di tambahkan global , maka hasilnya akan infinite looping
+          kenapa?, karena bacanya, saat kita mencari eko di const name, dimana dia akan dapat eko yang pertama, terus diulang loopingnya hasilnya tidak null tuh, pas di ulang kembali,  pencarian diulang dari awal,langsunglah ketemu eko yang pertama lagi, terus tidak akan berhenti,
+          jika kita pakai g, atau global,  maka pencarian nya menjadi seperti ini,
+          pada saat kita mencari eko di const name, kita akan ketemu dengan eko yang pertama, setelah itu dia akan cari lagi nama eko, melewati kurniawan , dan dapat Eko, e besar maka di tampilkan hasil Eko besar, masih mencari data tersebut karena tidak null/false , terus dia cari lagi sampai Kurniawan akhir string, dan tidak ada eko selain itu, maka hasilnya false, berarti loopingnya stop.
+          singkatnya: g ini mencari eko diseluruh isi data string name
+          */
+
+        while ((result = regex2.exec(name)) !== null) {
+          console.info(result);
+        }
+      }
+
+      {
+        /* REGEX ADVANCE
+        -> Assersions : indikasi awal dan akhri teks.
+        -> Character class : membedakan antara huruf dan angka.
+        -> Group dan Range : melakukan grouping atau range huruf dan angka
+        ->Quantifiers : menentukan jumlah huruf atau angka.
+                      |
+        */ //         v eko awal tulisan
+        //contoh Assesions
+        const name = "eko kurniawan\nEko khannedy\n edi kurniawan";
+        const regex1 = /^eko/gi; //tanda ini ^ artinya mencari eko diawal tulisan;
+        const regex2 = /^eko/gim; //kan eko khannedy itu , enter/multiline, jika kita ingin membuat dia mencari awal tulisan , kita harus menggunakan modifier m.
+        let result;
+        while ((result = regex1.exec(name)) !== null) {
+          console.info(result);
+        }
+        while ((result = regex2.exec(name)) !== null) {
+          console.info(result);
+        }
+      }
+
+      {
+        // REGEX CHARACTER CLASS
+        const name = "eko kurniawan\nEko khannedy\nedo kurniawan";
+        const regex1 = /^e.o/gim;
+        let result;
+        while ((result = regex1.exec(name)) !== null) {
+          console.info(result);
+        }
+        /*Penjelasan code diatas: maksud . (titik) : dia akan mencari kata awal yang tanda (^),
+        dimana huruf depan e ,
+        huruf tengah bebas abjadnya dari a sampai z, dan huruf terakhirnya o makas hasilnya
+        eko, Eko, edo*/
+      }
+
+      {
+        // REGEX grouping
+        const regex1 = /ek[aiueo]/gi;
+        const name = "eko,eki,eko,edo,eke,eka";
+        let result;
+        while ((result = regex1.exec(name)) !== null) {
+          console.info(result);
+        }
+
+        /*
+        penjelasany : arti /ek[aiueo]/, ini artinya grouping, jadi saya mencari kata  yang depanya ek ,dan belakanganya itu, harus huruf yang ada didalam kurung [aiueo], contohnya, eko, eki eko,eke,eka, itu dapat semua.
+        */
+      }
+
+      {
+        //REGULAR EXPRESION DI STRING
+        /*
+        -> .match(regex);  -> mencari semua data yang sesuai dengan regex, balikannya array
+        -> .search(regex);  -> mencari index data yang sesuai dengan regex, balikanya index
+        -> .replace (regex, value) -> mengubah data dengan value  yang sesuai regex , hanya satu saja yang di ubah.
+        -> .replace(regex, value ) -> mengubah semua data dengan value yang sesuai regex
+        -> .split(regex)  -> memotong string dengan regex, balikannya array.
+        */
+        // jangan khawatir, method ini,tidak menggangu data aslinya tetapi membuat data yang baru
+
+        const names = "eko,eki,eko,edo,eke,eka";
+
+        console.info(names.match(/ek[aiueo]/gi));
+        console.info(names.search(/eko/gi));
+        console.info(names.replace(/ek[aiueo]/i, "kamu")); //jika kita pakai modifier g, atau global, maka seluruh data yang akhirnya aiueo akan berubah menjadi kamu;
+        console.info(names.replaceAll(/ek[aiueo]/gi, "kamu")); //replaceAll, harus menggunakan modifier g, atau global, kalo tidak dia akan error
+        console.info(names.split(/e/gi));
+      }
+    </script>
+  </body>
+</html>

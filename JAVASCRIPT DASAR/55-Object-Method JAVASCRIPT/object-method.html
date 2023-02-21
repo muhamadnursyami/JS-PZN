@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Method</title>
+</head>
+<body>
+
+<script>
+// Object Method
+// Kode membuat Object Method menggunakan Anonymous Function
+
+const person = {
+    name : "Sami",
+    umur : function (value){
+        console.info(`Umur saya ${value}`);
+    }
+}
+person.umur(19);
+
+
+// Kode Membuat Object Method di luar function
+
+function kota (value){
+    console.info("Kota Tanjungpinang ");
+}
+
+const namaKota = {
+    provinsi: "Kepulauan Riau",
+    nama : kota
+}
+
+namaKota.nama();
+
+
+// Menambahkan method ke objec menggunakan anonymous function
+const market = {
+    namaBarang : "Laptop Mac",
+
+}
+
+market.harga = function (){
+    console.info ("Harga Rp. 20 Juta");
+} 
+
+market.harga();
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

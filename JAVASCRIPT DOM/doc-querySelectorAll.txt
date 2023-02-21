@@ -1,0 +1,44 @@
+1) QUERY SELECTOR ALL
+
+->  query Selector merupakan method untuk menseleksi node sesuai
+    dengan pola yang kita ingin cari
+
+-> Terdapat dua method untuk Query Selector :
+
+    -> document.querySelector(pola/parent) -> ini digunakan menseleksi node pertama yang sesuai dengan pola
+                                              -> misalnya ada 3 tag li, maka tag li yang pertama yang diambil.
+    
+    -> document.querySelectorAll(pola/parent) -> ini digunakan untuk menseleksi semua node yang sesuai dgn pola.
+
+2) Pola / Parent Query Selector.  
+
+-> Pola untuk Query Selector adalah menggunakan CSS Selector.
+-> Penggunaan Pola nya mirip ketika kita membuat Selector di CSS
+
+3) Universal Selector
+    -> Universal Selector merupakan Selector untuk menyeleksi semua element.
+    -> Kita bisa gunakan karakter *;
+
+4) Type Selector 
+    -> Type Selector adalah Selector yang digunakan untuk menyeleksi tag type HTML yang kita pilih;
+    -> Untuk menggunakannya , kita bisa langsung sebutkan nama tagnya;
+
+5) Class Selector
+    -> Class Selector merupakan Selector untuk menyeleksi semua element yang memiliki style class yang sesuai selector;
+    -> Untuk menggunakannya kita bisa sebutkan nama class nya diawali dengan titik;
+
+6) ID selector 
+    -> Id Selector merupakan selector yang di gunakan untuk menyeleksi id yang sesuai dengan selector.
+    -> untuk menggunakannya, kita bisa gunakan nama id diawali dengan karakter #.
+
+7) Attibute Selector
+    -> Attibute selector merupakan selector yang bisa digunakan untuk menyeleksi element berdasarkan Attributenya.
+    -> Kita bisa gunakan selector [Attibutenya]
+    -> atau bisa juga di gunakan dengan tag tertentu misalnya menggunakan selector div[attibute].
+
+8) Operator Attibute Selector
+    -> Kita juga bisa menggunakan Operator di attibute Selector
+    -> misalnya [attibute = value] : ini berarti attributnya itu harus sama denga valuenya.
+    -> [attibute ^= value] : ini berarti kalo attibute valuenya di awali dengan nama ini.
+    -> [attibute $= value] : ini berarti kalo attibute valuenya di akhir dengan nama ini.
+    -> [attibute *= value] : ini berarti kalo attibute valuenya  itu bebas mau di depan, tengah atau akhir.

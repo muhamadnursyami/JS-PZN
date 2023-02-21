@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object method</title>
+</head>
+<body>
+
+<script>
+
+// Membuat Object Method
+// 1) menggunakan anonymous function didalam object
+
+const nama = {
+    nama :"Muhamad Nur Syami",
+    sayHello : function (name) {
+        console.info(`Hai ${name}`);
+    }
+};
+
+nama.sayHello("Eko");
+
+
+// 2) Menggunakan function di luar object
+
+function saya (value) {
+    console.info(`Hello ${value}`);
+}
+
+const objectSaya = {
+    nama :"Nur Syami",
+    attiributSaya : saya
+};
+
+objectSaya.attiributSaya("budi");
+
+
+// 3) menambahkan method ke object menggunakan anonoymous function
+// kasus jika sudah ada objectnya duluan
+// kita ingin menambahkan attribut object tapi berupa function
+const market = {
+    barang : "Sapu"
+
+};
+
+market.harga = function (value){
+    console.info(`Harga Sapu ${value}`);
+}
+
+market.harga("Rp.2.000");
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

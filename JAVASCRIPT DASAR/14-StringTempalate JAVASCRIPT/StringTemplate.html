@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StringTemplate </title>
+</head>
+<body>
+    
+    <script>
+        // String Template
+        const pertama = `Name : `;
+
+        // Contoh KOde Mengambil Variabel
+    
+        const name = "Muhamad Nur Syami ";
+        const firtsName = "Muhamad ";
+        const middleName = "Nur";
+        const lastName = "Syami ";
+        const template = `Nama : ${firtsName} ${middleName} ${lastName}`;
+
+        console.info(template);
+
+        // Kode : Expression didalam string Template
+        const nilai = 50;
+        const template2 = `Name : ${name}, Lulus ${nilai  > 70}`;
+
+        console.info(template2);
+
+        // Mutli line 
+
+        const multiLine = `Nama saya muhamad nur syami
+saya lagi menempuh pendidikan di 
+univeristas maritim raja ali haji`;
+
+        document.writeln("<pre>")
+        document.writeln(multiLine);
+        document.writeln("</pre>")
+
+    </script>
+</body>
+</html>

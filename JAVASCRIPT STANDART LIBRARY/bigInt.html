@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big Int</title>
+  </head>
+  <body></body>
+  <script>
+    // Kalo  kita ingin nilai yang lebih dari Number.MAX_SAFE_INTEGER kita bisa menggunakan BigInt ();
+
+    const a = BigInt(Number.MAX_SAFE_INTEGER);
+    const b = BigInt(Number.MAX_SAFE_INTEGER); // 2 variabel ini kan sudah jelas lebih dari batas di Number,
+    //jadi jika kita ingin mendapatkan nilai tersebut kita herus menambahkan BigInt
+
+    const c = a + b;
+    console.info(c);
+    console.info(typeof c);
+  </script>
+</html>

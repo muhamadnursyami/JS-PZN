@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attribute Selector</title>
+  </head>
+  <body>
+    contoh untuk sebuah attibute tanpa lihat value attibutnya apa
+    <div class="eko">eko</div>
+    <div class="Kuniawan">Kuniawan</div>
+    <div class="Khannedy">Khannedy</div>
+    contoh untuk yang attibutenya, value awalnya seperti ini
+    <div class="eko">eko</div>
+    <div class="ekoKuniawan">Kuniawan</div>
+    <div class="ekoKhannedy">Khannedy</div>
+    contoh untuk yang attibutenya, value akhirnya seperti ini
+    <div class="eko">eko</div>
+    <div class="Kuniawaneko">Kuniawan</div>
+    <div class="Khannedyeko">Khannedy</div>
+    contoh untuk yang attibutenya, value boleh di tengah, depan atau akhir
+    seperti ini
+    <div class="eko">eko</div>
+    <div class="KuniawanekoKhannedy">Kuniawan</div>
+    <div class="Khannedyeko">Khannedy</div>
+    <script>
+      // ini arinya, kita akan mengambil semua yang ada attribute yang valuenya   class.
+      const elements = document.querySelectorAll("div[class]"); // berarti semua attribute yang bernama class, dan tidak perlu valuenya apa.
+      const elements2 = document.querySelectorAll("div[class ^= eko]"); // berarti awalnya harus eko
+      const elements3 = document.querySelectorAll("div[class $= eko]"); // berarti akhirnya harus eko
+      const elements4 = document.querySelectorAll("div[class *= eko]"); // berarti boleh di tengah depan belakang harus ada eko
+      console.info(elements);
+      console.info(elements2);
+      console.info(elements3);
+      console.info(elements4);
+    </script>
+  </body>
+</html>

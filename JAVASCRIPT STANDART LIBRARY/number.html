@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number ~ Standart Library</title>
+  </head>
+  <body>
+    <script>
+      const input = "123";
+      const number = Number(input); // fungsi untuk mengubah string menjadi number Number();
+
+      console.info(typeof input); // String
+      console.info(typeof number); // number
+      console.info(number); // 123
+
+      console.info(Number("salah")); // NaN
+
+      /**
+       * * Number Static Properties
+       */
+      console.info(Number.MIN_VALUE); // Nilai minimal
+      console.info(Number.MAX_VALUE); // Nilai Maxsimal
+      console.info(Number.MIN_SAFE_INTEGER); // Nilai Aman Minimal
+      console.info(Number.MAX_SAFE_INTEGER); //Nilai Amana Maxsimal
+      console.info(Number.NaN); //
+
+      /**
+       * * Number Static Method
+       */
+      const data = Number("syami"); // atau bisa juga "1234"
+
+      console.info(Number.isInteger(data)); // Mengecek apakah Number tersebut adalah Integer / bilanga bulat
+      console.info(Number.isNaN(data)); // Mengecek apakah Number tersebut adalah Nan / atau bukan
+
+      /**
+       * * Number Intance Method
+       * ? toString = Mengubah Angka Menjadi Format Biner
+       * ? toLocalString = mengubah Angka Menjadi Format Angka Sesuai negara tersebut.contoh seperti indonesia dan us
+       */
+
+      const value = Number("12345");
+      console.info(value.toString(2)); // Mengubah  nilai = "12345" menjadi Bilangan Biner seperti pelajaran ORKOM  (2) -> biner
+      console.info(value.toLocaleString("id-Id")); // Mengubah  nilai = "12345" menjadi Format Indonesia pake titik .
+      console.info(value.toLocaleString("en-US")); // Mengubah  nilai = "12345" menjadi Format Amerika Pake Koma ,
+    </script>
+  </body>
+</html>

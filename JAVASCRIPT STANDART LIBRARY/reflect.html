@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reflect</title>
+  </head>
+  <body></body>
+  <script>
+    // reflect yaitu jika kita mau mengecek, mengambil data atau menambah kan sesuatu di object tanpa menyentuh object nya sekali pun.
+    // reflect itu static method, bukan instance method . atau kalo di bahasa pemograman lain di kenal dengan reflectsion
+    const person = {};
+    //                       |         |
+    //             property  v         v value
+    Reflect.set(person, "fistName", "Eko"); // jika kita ingin menambahkan property dan value di object tanpa menyentuh objectnya
+    Reflect.set(person, "lastName", "Khannedy"); // jika kita ingin menambahkan property dan value di object tanpa menyentuh objectnya
+
+    console.info(person); //jika kita ingin menampilkan data ,dalam bentuk object
+
+    console.info(Reflect.get(person, "fistName")); //jika kita ingin menampilkan data , bukan dalam bentuk object
+    console.info(Reflect.get(person, "lastName")); //jika kita ingin menampilkan data , bukan dalam bentuk object
+
+    console.info(Reflect.has(person, "fistName")); //hasil=  true, jika kita ingin mengecek apakah fistName ada di object person.
+    console.info(Reflect.has(person, "middleName")); //hasil= false,  jika kita ingin mengecek apakah middleName ada di object person.
+    console.info(Reflect.has(person, "lastName")); //hasil=  true, jika kita ingin mengecek apakah lastName ada di object person.
+  </script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Super Constructor</title>
+</head>
+<body>
+    <script>
+
+    class Employee {
+        constructor (firstName) {
+            this.firstName = firstName;
+        }
+    };
+    
+    class Manager extends Employee {
+        // Jika kita ingin mengambil constuctor yang ada class Employee, Maka codenya seperti ini
+        // dan di class manager kita ingin memiliki 2 parameter
+        constructor(firstName, lastName){
+            super(firstName); // memanggil parameter di parent class employee
+            this.lastName = lastName;
+            console.info(`Hello World My is ${firstName} ${lastName}`);
+        }
+        
+    }; 
+
+    const eko   = new Employee("Muhamad");
+    const syami = new Manager("Muhamad", "Syami");
+
+    console.info(syami);
+    console.info(eko);
+    
+    </script>
+</body>
+</html>

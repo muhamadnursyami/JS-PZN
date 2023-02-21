@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Form</title>
+  </head>
+  <body>
+    <form name="commentForm">
+      <label for="comment">
+        Comment : <input id="comment" type="text" name="comment" />
+      </label>
+      <br />
+      <label for="from">
+        From : <input id="from" type="text" name="from" />
+      </label>
+      <br />
+      <input type="submit" value="submit" />
+    </form>
+    <div id="commentList">
+      
+    </div>
+
+    <script>
+      //Penjelasan : code document.query sampai function(event)
+      //kita akan mengambil query form dimana, nama attibutenya = name dan isi attributenya = commentForm
+      // kemudian menggunakan method.on submit artinya, itu sebuah aksi ketika kita submit seperti apa?, dia seperti event click,
+      //tetapi kalo di form dia memiliki method tersendiri yaitu onsubmit, berfungsi untuk mengirimkan sebuah data,
+      // yang dilakukan secara otomatis oleh javascriptnya.
+      // kita ingin merubah function onsubmit itu seperti yang ingin kita, 
+      // dengan membuat seperti ini : = function (event){} membuat function sendiri untuk di ubah ke yang kita ingin kan.
+      // arti (event) itu berarti kita ingin mengambil sebuah detail event yang di miliki oleh event.
+      // seperti contoh ini  yaitu : event.preventDefault;
+      document.querySelector("form[name = commentForm]").onsubmit = function (event) 
+      {
+        // ini artinya :  membatalkan aksi yang semestinya dilakukan oleh form, 
+        // karena ketika form itu submit, dia akan melakukan pengiriman data , kemudian browsernya
+        // ke refresh. jika ingin mengetahui, 
+        //coba saja, commetkan code event.preventDefault(); atau tidak di comment , lihat perbedaanya.  
+        event.preventDefault();
+        // ini kita mengambil data commetList kemudian simpan dia kedalam sebuah variabel
+        const commentList = document.getElementById("commentList");
+        // ini kita mengambil data dari input  comment kemudian kita masukan dalam variabel commet,
+        // tetapi .value maksudnya kita mengambil nilai nya, jika kita tidak menggunakan
+        // .value maka yang akan di ambil itu typeNode form  yaiut : htmlinput elemnt
+        const comment = document.getElementById("comment").value;
+        const from = document.getElementById("from").value;
+        
+        
+        // kemudian kita buat elemnet baru yaitu tag p di div comment list
+        const commentItem = document.createElement("p");
+        //kemudian berikan commentItem data yang setiap inputan dari comment dan from akan di masukan
+        // kedalam variabel commentItem
+        commentItem.textContent = `${comment} : ${from}`;
+        // selanjutnya ini berarti kita masukan data di dalam commentItem ke commenst list untuk ditampilkan.
+        commentList.appendChild(commentItem);
+
+        // ini artinya kita ingin ketika form nya di submit, data di from nya di hilangkan
+        // silahkan cek sendiri perbedaanya jikatidak menggunakan ini.
+        document.querySelector("form[name = commentForm]").reset();
+        
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body></body>
+  <script>
+    {
+      //  Object Freeze dan Seal
+      /*
+    -> secara default , object bisa diubah dan di hapus propertnya 
+    -> Jika kita ingin mengubah suatu object menjadi object yang tidak bisa diubah
+        atau tidak bisa di hapus, kita bisa menggunakan static method 
+    -> Object.freeze () -> untuk meengubah object menjadi object yang tidak bisa dirubah valuenya  dan tidak bisa di hapus atributnya.
+    -> Object.seal () -> untuk mengubah object menjadi object yang tidak bisa di rubah attributnya tetapi bisa dirubah valuenya 
+    -> kedua method ini tidak bisa menambah property atau menghapus prorperty 
+    
+    */
+
+      //Object Freeze -> tidak akan terhapus dan terubah
+
+      const person = {
+        firstName: "Muhamad",
+        lastName: "Syami",
+      };
+
+      Object.freeze(person);
+      delete person.firstName;
+      person.firstName = "Nur";
+      console.info(person); //  Muhamad dan Syami
+    }
+
+    {
+      // Object Seal -> tidak bisa di hapus tetapi bisa di ubah valuenya
+
+      const person = {
+        firstName: "Muhamad",
+        lastName: "Syami",
+      };
+
+      Object.seal(person);
+      delete person.lastName;
+      person.firstName = "Nur";
+      console.info(person); // Nur dan Syami
+    }
+
+    {
+      // Object assign
+      /*
+        -> kadang  kita ada kasus  menggabungkan semua attribute  dari sebuh object  ke object lainnya 
+        -> kita bisa gunakan Object.assign(target, source)
+            target adalah tujuan tempat untuk kita menduplikat data dari source,
+            dan data dari source akan di timpa atau di duplikat ke target,
+            jadi jika ada attribut yang sama maka attribut di source akan menimpa attribut target,
+            maksudnya attribut source yang akan di ambil.
+        */
+
+      const target = {
+        firstName: "Pratiwi",
+      };
+
+      const source = {
+        firstName: "Indah",
+        lastName: "Puspita",
+      };
+
+      Object.assign(target, source);
+      console.info(target);
+      console.info(source);
+    }
+
+    {
+      // Object Name dan Value
+
+      /*
+        -> Object memiliki static method yang berguna untuk mengambil semua property atau arttibut dan valuenya
+        -> Object.value digunakan untuk mengambil valuen yang berada di object
+        */
+
+      const person = {
+        firstName: "Muhamad",
+        middleName: "Nur",
+        lastName: "Syami",
+      };
+
+      // Kode 1
+      Object.values(person); // balikannya object
+      Object.getOwnPropertyNames(person);
+      console.info(person);
+      console.info(person);
+
+      //Kode 2
+      // console.info(Object.values(person)); // balikannya array
+      // console.info(Object.getOwnPropertyNames(person));
+    }
+  </script>
+</html>

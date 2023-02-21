@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Json</title>
+  </head>
+  <body></body>
+  <script>
+    const person = {
+      fistName: "Muhamad",
+      middle: "Nur",
+      lastname: "Syami",
+      address: {
+        country: "Indoneisa",
+        city: "Tanjungpinang",
+      },
+      hobi: ["Belajar", "Turu", "Baca Buku"],
+    };
+
+    const konvertObject = JSON.stringify(person); // untuk menkonver dari object ke JSON
+    console.info(konvertObject);
+
+    const konverJson = JSON.parse(konvertObject);
+    console.info(konverJson);
+  </script>
+</html>

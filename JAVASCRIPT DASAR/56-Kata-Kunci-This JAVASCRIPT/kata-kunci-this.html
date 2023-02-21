@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kata Kunci This</title>
+</head>
+<body>
+
+<script>
+//  Kata Kunci This
+
+// Kode kata kunci This di Global Scope 
+console.info(this);
+
+// Kode Kata kunci This di Local Scope
+function sampel (){
+    console.info(this);
+}
+sampel();
+
+// Kode Kata Kunci This DI Object Method
+
+const person = {
+    name : "Sami",
+    sayHello : function(value) {
+        console.info(`Hello ${value} My Name is ${this.name}`);
+    }
+}
+person.sayHello("Eko");
+
+/*
+kata kunci this ini , bukan lagi ke window melainkan ke object pemilik function ini, yaitu const person, kalo kata kunci ini mengacu ke person, kalo kita pengen mengakses property name , kita  bisa menggunakan this.name. untuk mengakses atributnya ataufunction lain  atau property lainnya kita di dalam person kita bisa menggunakan this, untuk mengambil namenya seakan akan seperti person.name, tetapi kan kita tidak bisa mengaksesnya karena scope, oleh karena itu bisa mengaksesnya melalui kata kunci this.propertinya apa 
+
+
+
+*/
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

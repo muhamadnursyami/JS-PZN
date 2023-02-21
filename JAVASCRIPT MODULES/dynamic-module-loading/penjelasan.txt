@@ -1,0 +1,9 @@
+1)  Saat kita menggunakan module dengan cara import, maka 
+    semua module akan di load.
+2)  Pada kenyataanya, kadang kita tidak ingin meload semua 
+    module dari awal , kita ingin menload module
+    ketika dibutuhkan saja, ini akan menghemat bandwith jaringan juga, 
+    karena kita tidak perlu mendowld semuanya di awal
+3)  Javascript mendukung dynamic module loading, caranya kita
+    menggunakan function import (), dimana hasilnya
+    berupa promise<ModuleObject>

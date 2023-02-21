@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Method</title>
+</head>
+<body>
+    <script>
+
+    // Kode menambahkan method ke object intance tidak direkomendasikan
+        // class Person {
+        //     constructor (name){
+        //         this.name = name;
+        //         this.sayHello = function (name){
+        //             console.info(`Hello ${name} myname is ${this.name}`);
+        //         }
+        //     }
+        // }
+        // const syami = new Person("Syami");
+        // console.info(syami);
+        
+    // Kode Rekomendasi untuk menambah kan method di class 
+        class Person {
+            constructor (name){
+                this.name = name    
+                
+            }
+    //  Langsung saja Nama Method nya tanpa membuat function dan jika ada paramater silakan di tambahakan       
+    //          |
+    //          v
+            sayHello (name){
+                console.info(`Halo ${name} My Name is ${this.name}`);
+            }
+
+        }
+        const syami = new Person("Syami");
+        syami.sayHello("Eko");
+        console.info(syami);
+        
+    
+
+
+    </script>
+</body>
+</html>

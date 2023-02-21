@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator instanceof</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            Pengertian operator instance of adalah suatu operator untuk mengecek apakah sebuah object
+            itu merupakan instance dari suatu class tertentu atau bukan. operator ini menghasilan nilai
+            boolean,
+            Jika true maka dia bener object tersebut  adalah intance object  class tertentu
+            Jika false maka bukan.
+            
+        */
+        // Contoh 1, dalam kasus clas
+        class Employee {
+
+        }
+
+        class Manager {
+
+        }
+
+        const syami = new Employee();
+        const eko = new Manager();
+
+        console.info(syami instanceof Employee);
+            /*  bacanya :
+                apakah instance syami merupakan class dari empolyee*/
+        console.info(syami instanceof Manager);
+
+        console.info(eko instanceof Employee);
+        console.info(eko instanceof Manager);
+    
+        
+        /* Contoh Kedua :
+        Untuk mengecek apakah suatu class  merupakan  turunan dari class lainnya
+        */
+
+        class Perusahaan {
+
+        }
+
+        class Bos extends Perusahaan {
+
+        }
+
+        const budi = new Perusahaan();
+        const nugrah = new Bos();
+
+        console.info(budi instanceof Perusahaan); 
+            /* bacanya : apakah intance budi merupakan dari class dari
+                empolyee dan apakah instace budi merupakan turunan dari employee
+            */
+        console.info(budi instanceof Bos);
+
+        console.info(nugrah instanceof Perusahaan);
+        console.info(nugrah instanceof Bos);
+    
+    </script>
+</body>
+</html>

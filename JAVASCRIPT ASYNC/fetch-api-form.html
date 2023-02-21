@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Api</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        username
+        <input type="text" name="username" id="username" />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" name="password" id="password" />
+      </label>
+      <br />
+      <input type="button" name="login" id="login" value="Login" />
+      <h1 id="response"></h1>
+    </form>
+    <script>
+      function doLogin() {
+        // kalo menggunakan new FormData , pada saat membuat request kita tidak perlu buat dialam object request itu headernya , content-typenya itu application/x-www-form-urlencoded. hapus saja tanpa buat header
+        const form = new FormData();
+        form.append("username", document.getElementById("username").value);
+        form.append("password", document.getElementById("password").value);
+        const request = new Request("https://eo5848pozghh6wj.m.pipedream.net", {
+          method: "POST",
+          body: form,
+        });
+
+        const response = fetch(request);
+        response
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (text) {
+            document.getElementById("response").innerHTML = text;
+          });
+      }
+
+      document.getElementById("login").onclick = doLogin;
+    </script>
+  </body>
+</html>

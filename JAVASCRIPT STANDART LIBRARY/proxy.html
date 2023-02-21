@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proxy</title>
+  </head>
+  <body>
+    <script>
+      // proxy harus bikin target dan handler
+      /*
+      -> porxy perlu membuat handler , dimana dalam handler , kita membuat  function yang dinamakan intercepetor yang digunakan  ketika mengambil data atau mengubah data  ke target.
+      -> untuk membuat proxy kita bisa gunakan  new Proxy (target, handler)*/
+      {
+        const target = {
+          middleName: "Kurniawan",
+        }; // contoh jika object targenyta kosong. atau ada objectnya
+        const handler = {
+          // membuat interceptor, boleh ada boleh tidak, tetapi biasanya harus ada
+          get: function (target, property) {
+            return target[property]; // jika kita memperbolah kan kita langsung return, ini yang di namakan interceptor.
+          },
+          set: function (target, property, value) {
+            target[property] = value;
+          },
+        };
+
+        //membuat proxy
+        const proxy = new Proxy(target, handler);
+        //jika kita ingin menambahdata, itu lewat proxynya, bukan targtnya
+        proxy.fistName = "Eko";
+        proxy.lastName = "Khannedy";
+
+        console.info(proxy.fistName);
+        console.info(proxy.middleName);
+        console.info(proxy.lastName);
+        console.info(target);
+      }
+      /*Penjelasan
+      -> awal mula, jika saat kita proxy.firstName jadi proxy ini, memberi wewenang ke dalam const handler, dimana dia akan memanggil set,
+      kemudian masuk ke (target, property, value) maksudnya , datanya akan di tambahkan ke object target, kemudian propertnya firstName dan valuenya Eko. dan target[property] = value, itu menambahkan data nya kedalam object target. saja juga caranya untuk proxy.lastName
+      -> kemudian jika kita manggil console.info(proxy.firstName);, maksudnya di akan masuk kedalam handler, otomatis ke getnya  kemudian, return target[propert], maksudnya memanggil object target. dan keluarnya eko, khannedy
+      */
+
+      // get  adalah function yang akan di panggil, jika si proxynya  panggil.
+      // set ini akan di panggil , jika ada sesuatu yang ingin di tambahkan di functionnya.
+
+      /*
+      -> saat kita mengubah data proxy, secara otomatis data akan di kirimkan ketarget  melalui handler  dengan memanggil function set(target, property , value);
+      ->saat kita mengambil data proxy , secara otomatis data akan diambil dari target melalui handler, dengan memanggil function get(target, property)
+      -> artinya jika kita ingin melakukan sesuatu  sebelum dan setelah nya , bisa kita melakukan di handler, 
+      */
+
+      {
+        //LOG HANDLER
+
+        const target = {
+          middleName: "Kurniawan",
+        };
+
+        const handler = {
+          get: function (target, property) {
+            console.info(`Acces property :${property}`);
+            return target[property];
+          },
+          set: function (target, property, value) {
+            console.info(`Change property : ${property} : ${value}`);
+            target[property] = value;
+            // bisa juga melakukan validasi contohnya
+            /* if ( value == null){apa yang di lakukan};
+                else{maka apa yang dilakukan}
+                */
+          },
+        };
+
+        const proxy = new Proxy(target, handler);
+
+        proxy.fistName = "Eko";
+        proxy.lastName = "Khannedy";
+
+        console.info(proxy.fistName);
+        console.info(proxy.middleName);
+        console.info(proxy.lastName);
+      }
+    </script>
+  </body>
+</html>

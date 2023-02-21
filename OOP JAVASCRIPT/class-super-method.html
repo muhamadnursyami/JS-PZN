@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Super Method</title>
+</head>
+<body>
+    <script>
+        // Studi Kasus 
+        /*  Jika ada dua class, class sekolah (induk) dan class Siswa(class anak),dan class siswa extends 
+            ke class sekolah dan kedua class memiliki function yang namanya sama ataupun berbeda. 
+            dimana di class siswa (class anak), itu bisa mengambil function atau method yang ada di 
+            class sekolah (class induk), dengan menggunakan super.nama_function();*/
+        class Sekolah {
+            kelas(){
+                console.info("Kelas 2");
+            }
+            lab(){
+                console.info("Lab Informatika");
+            }
+        }
+
+        class Siswa extends Sekolah {
+            kelas(){
+                console.info("kelas 5");
+            }
+            lab(){
+                super.lab();
+                super.kelas();
+                // kelas();
+                console.info ("Lab Electro");
+            }
+        }
+
+        const siswa = new Siswa ();
+        siswa.lab();
+        siswa.kelas();
+        
+    </script>
+</body>
+</html>

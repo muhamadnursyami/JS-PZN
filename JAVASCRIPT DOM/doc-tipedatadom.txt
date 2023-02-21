@@ -1,0 +1,101 @@
+TIPE DATA DOM
+
+1) Documennt        -> Merupakan representasi dari halaman web.
+2) Node             -> Merupakan parent dari semua tipe data dom seperti Documennt,Element, Attr
+3) Element          -> Merupakan representasi object element di halaman web misal, head, body, form , input dan lain.
+4) NodeList         -> Merupakan Array / collection Kumpulan dari Node disebut NodeList.
+5) Attr/ Attribut   -> Merupakan representasi object attribut dalam element. misalkan jika di html seperti idnya apa? dan di css, classnay apa?
+6) NamedNodeMap     -> collection/ array yang berisikan Attr dalam bentuk Map. Anggap saja ini kumpulan dari attribut.
+
+
+2) Node  -> adalah base clases  dari Documennt, element dan Attr/attribut
+            Artinya semua fitur  yang dimiliki node itu bisa dimiliki oleh turunannya misalnya document, element dan attribut
+            Node dalam DOM itu bentuknya tree(pohon) , artinya dengan Node, kita bisa melihat 
+            Parent(node diatasnya ), atau children (Node bawahnya), sibling(Node disebelahnya).
+
+-> Node Property : Property di node banyak berisi informasi reference ke Node lainnya, 
+                    seperti ke node parentnya, node childrennya atau node sebelahnya.
+-> Node Method   : Method Node bisa digunakan untuk Memanipulasi data Node didalam Node tersebut
+                   misalnya : menambah atau menghapus Node children atau Node turunannya.             
+
+
+3) Element -> element merupakan parent dari node, element berbentuk seperti <html> <body>
+
+-> Element Property -> karena Element turunan dari Node , jadi semua Property Node kita bisa gunakan di Element.
+    Cari dokumentasi  elemen js di browser.
+
+-> Element Method -> karenaElement turunan darI Node , maka semua Method yang ada di Node kita bisa gunakan.
+
+
+// Membuat Element 
+-> sebelumnya kita hanya mengambil data dari html yang sudah di isi datanya dengan menggunakan id
+-> kita juga bisa membuat object element baru  dan menambahkan nya ke halaman web.
+-> hal itu kita bisa menggunakan method document.createElement(tagnya) pada document.
+
+
+4) NodeList -> merupakan kumpulan dari Node.
+            -> NodeList biasanya digunakan ketika kita ingin menyeleksi banyak Node
+               Sekaligus, misalnya jika kita ingin mengambil semua children / 
+               anak turunan di Node Dan hasilnya menjadi NodeList.
+            -> contoh NodeList menggunakan :
+               document.querySelectorAll();
+   
+-> Dua jenis NodeList : yaitu Live  NodeList dan Static NodeList.
+-> Live NodeList : Jika ada perubahan yang terjadi pada NodeList nya, maka akan berubah semua NodeList nya.
+-> Static NodeList : Jika ada perubahan yang terjadi pada NodeList nya, maka tidak akan berubah semua NodeList nya. 
+
+-> Saat Kita menggunakan element.childNodes, maka NodeList menjadi live , artinya jika ada perubahan maka, akan berubah Nodelistnya.
+-> Saat kita menggunakan document.querySelectorAll(); , maka NodeList menjadi static, artinya jika ada perubahan, maka tidak akan merubah Nodelistnya.
+
+-> childNodes itu menggunakan document.elementById();
+
+
+5) Attribut -> merupakan representasi dari attribut sebuah element atau singkatnya key-value, 
+   keynya adalah nama attribut dan valuenya adalah value dari attribut;
+   -> data keynya itu:  nama attributnya, namanya itu tidak bisa dirubah.
+   -> data valuenya itu : isi value attributnya,  valuenya itu bisa dirubah.
+
+   -> Membuat Attribut
+      -> untuk membuat attribut, kita bisa menggunakan document.createAttribut(name);
+      -> lalu untuk menambahkan ke element, kita bisa gunakan element.setAttributNode (namaAttributnya);
+      -> atau kita juga bisa langsung dengan cara cepat :
+         dengan menggunakan value :
+         element.setAttribut(name, value);
+   
+   -> Attribut hanya memiliki Propert Saja.
+5) NamedNodeMap -> merupakan kumpulan dari attribut.
+                   mirip seperti NodeList, kalo Nodelist kan kumpulan dari node, 
+                   namun kalo NamedNodeMap  kumpulan dari attribut;
+   -> NamedNodeMap mempunyai Property dan Method.
+   -> NamedNodeMap turunan dari iterabel , jadi bisa kita iterasi menggunakan for of
+   -> untuk mendapatkan NamedNodeMap itu menggunakan propery dari element 
+      bernama attributes
+
+
+6) Text Node : 
+   -> saat kita membuat HTML, kadang kita membuat text tanpa tag;
+   -> Saat halam web tersebut di representasi ke DOM ,
+      TEXT tanpa TAG itu bukanlah sebuah element melainkan Text Node
+      
+      contoh :
+      <html>
+      <head> <title> </title> </head>
+      <body>
+         Why Yes??
+      </body>
+      </html>
+   
+   -> kita lihat seperti contoh diatas, TEXT why yes ?? tidak memiliki 
+      tag apa pun, seperti h1, atau p dan lain lain.
+   -> dan inilah disebut Text Node
+
+-> MEMBUAT TEXT NODE;
+   -> dengan mengunakan : document.createTextNode(string nama textnya apa);
+
+
+
+
+
+
+
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Destructuring </title>
+</head>
+
+
+<body>
+
+<script>
+    //  Destructuring Pada Array
+    {
+        const names = ["Eko","Syami","Nur","Kurniawan","Khannnedy"];
+        const [firstName,middleName,lastName,...others] = names;
+
+        console.info(firstName);
+        console.info(middleName);
+        console.info(lastName);
+        console.info(others);
+    }
+
+    // Destructuring Pada Object
+    {
+        const person = {
+            firstName : "Muhamad",
+            lastName : "Syami",
+            addres: "Kepri",
+            hoby : "Game"
+        }
+
+        let {firstName,lastName,...others} = person
+
+        console.info(firstName);
+        console.info(lastName);
+        console.info(others);
+
+
+    }
+
+
+    {
+        // Destucturing Function Parameter
+
+        function displayPerson({firstName,middleName,lastName, addres:{city,country},...others}){
+            console.info(firstName);
+            console.info(middleName);
+            console.info(lastName);
+            console.info(city);
+            console.info(country);
+            console.info(others);
+        }
+
+        const person = {
+            firstName : "Muhamad",
+            middleName :"Nur",
+            lastName : "Syami",
+            addres : {
+                city :"Tanjungpinang",
+                country:"Indonesia"
+            },
+            hoby :"Game",
+            Channel :"Programmer Zaman Now"     
+        };
+
+        displayPerson(person);
+    }
+
+    {
+        // Tanpa Destructuring
+
+        // function sum (array){
+            //     return array[0] + array[1]
+            // }
+            
+            // console.info(sum([1,10]));
+            
+    // Distructuring Paramater Function Array 
+            
+        function sum ([first, second]){
+            return first + second;
+        
+        }
+        console.info(sum([10,10]));
+            
+    }
+
+    {
+        // Default Value Destructuring dalam array
+
+        const names = ["Eko","Kurniawan ","Khannedy"];
+        const [firstName,middleName,lastName] = names;
+
+        console.info (firstName);
+        console.info (middleName);
+        console.info (lastName);
+
+    }
+
+    {
+        // Default value Destructuring dalam Object
+
+        const person = {
+            firstName : "Eko",
+            lastName: "Khannedy"
+        }
+
+        const {firstName, middleName = "kurniawan",lastName} = person;
+        console.info(firstName);
+    }
+
+    {
+        // Menggunakan nama variable lain di object
+        const names = {
+            firstName :"Budi",
+            lastName :"Joko"
+        }
+
+        const {
+            firstName : namaDepan,
+            middleName :namaTengah = "Jaya",
+            lastName : namaBelakang
+        } = names;
+
+        console.info(namaDepan);
+        console.info(namaBelakang);
+        console.info(namaTengah);
+        
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

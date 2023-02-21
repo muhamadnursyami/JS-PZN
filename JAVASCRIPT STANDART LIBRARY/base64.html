@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base 64</title>
+  </head>
+  <body></body>
+  <script>
+    /*
+    Base 64 merupakan binary to text encoding , representasi binary data dalam format string.
+    Base 64 merupakan encoding yang biasanya digunakan ketika perlu mengirim data dari client ke server.
+    Karena encoding base 64 merupakan text, oleh karena itu sangat aman digunakan pada query parameter URL atau text bodu dalam form
+    
+    -> Base 64 Function
+        ->> btoa(value)  -> Encode ke base64 dari value aslinya
+        ->> atob(encoded) -> Decode dari base 64 ke value, seperti kembali ke nilai aslinya
+    
+    */
+
+    const original = "Eko&Kurniawan=Khannedy";
+    console.info(original);
+
+    const endcoded = btoa(original);
+    console.info(endcoded);
+
+    const decoded = atob(endcoded);
+    console.info(decoded);
+  </script>
+</html>

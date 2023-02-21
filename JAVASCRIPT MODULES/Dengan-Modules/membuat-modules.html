@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membuat Modules Dengan Export dan Import</title>
+  </head>
+  <body></body>
+
+  <!-- Yang membedakan tanpa modules dan dengan module di typenya yaitu  type="Modules" 
+          Tetapi ini belum bisa di akses atau error karena secara default fitur javascript
+          modules , semua kode baik itu function , class dan lain lain, tidak akan di ekspos 
+          keluar modules, jika kit ingin  mengekpos kode tersebut , kita harus  memeberitahunya 
+          secara eksplisit , atau dengan mengexport  -->
+
+  <!-- Ini membuat module -->
+  <script type="module">
+    // ini membuat import
+    import { sayHello, sayGoodBye, names, Manusia } from "./scripts/say.js"; // kasus jika function sayHello dan sayGoodBye, varibael const names, dan class manusia di import
+    // import { sayHello } from "./scripts/say.js"; jika satu yang di import
+    sayHello("Eko");
+    sayGoodBye("Syami");
+
+    console.log(names);
+
+    const human = new Manusia("Muhamad Nur SYami");
+    human.sayHello("Budi");
+  </script>
+</html>

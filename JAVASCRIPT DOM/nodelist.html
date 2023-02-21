@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NodeList</title>
+  </head>
+  <body>
+    <ul id="menu1">
+      <li id="first">first</li>
+      <li id="second">second</li>
+      <li id="thrid">thrid</li>
+    </ul>
+    <ul id="menu2">
+      <li>Eko</li>
+      <li>Kurniawan</li>
+      <li>Khannedy</li>
+    </ul>
+    <script>
+      const list = document.querySelectorAll("li"); //artinya kita mengambil semua tag li di dalam file html kita.
+      console.info(list);
+
+      const menu1 = document.getElementById("menu1").childNodes; // childnode untuk mengambil anak dari menu1 yaitu first,second,third dan bersifat live;
+      console.info(menu1);
+      // ini kenapa hasil 7, karena  getElementById ini , memeiliki element text, jika kita ada enter atau spasi
+      // maka hasilnya itu console. nanti ada kalimat text.
+
+      const menu2 = document.getElementById("menu2").childNodes;
+      console.info(menu2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Api</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        username
+        <input type="text" name="username" id="username" />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" name="password" id="password" />
+      </label>
+      <br />
+      <input type="button" name="login" id="login" value="Login" />
+      <h1 id="response"></h1>
+    </form>
+    <script>
+      function doLogin() {
+        // pertama pertama buat request dan response dulu
+        // buat request nya untu fetch api
+        const request = new Request("https://eo5848pozghh6wj.m.pipedream.net", {
+          // masuk object , seperti method, header, body, credentials dan lain lain ada di dokumentasi.
+          // POST untuk mengambil data kalo nggak salah
+          method: "POST",
+          // content type header itu application/json
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // bodynya ini kita ingin ambil data dari inputan user itu , dari object menjadi string JSON.
+          body: JSON.stringify({
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+          }),
+        });
+        // dan buat response nya, ini untuk mengirim datanya
+        const response = fetch(request);
+        response
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (json) {
+            document.getElementById("response").textContent = json;
+          });
+      }
+      document.getElementById("login").onclick = doLogin;
+    </script>
+  </body>
+</html>

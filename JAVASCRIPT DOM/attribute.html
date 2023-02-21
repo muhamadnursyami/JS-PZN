@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attribute</title>
+  </head>
+  <body>
+    <img
+      id="logo"
+      src="https://www.programmerzamannow.com/img/pzn.png"
+      alt="PZN Logo"
+    />
+    <script>
+      // kita ambil dulu idnya logo;
+      const logo = document.getElementById("logo");
+      // kalo kita mau ambil attribut misalkan attribut src;
+      const src = logo.getAttributeNode("src"); // src ini adalah attribut, sama seperti  alt,dan id;
+      // kalo kita ingin melihat isi namenya
+      console.info(src.name); // result : src
+      // kalo kita ingin mengambil isi  src nya, atau value isinya .
+      console.info(src.value); // result : https://www.programmerzamannow.com/img/pzn.png
+
+      // jika kita ingin cara cepat untuk mengambil valuenya saja, tidak dengan namenya
+      const src1 = logo.getAttribute("src"); // getAttribut ini untuk mengambil isi valuenya saja
+      console.info(src1);
+    </script>
+  </body>
+</html>

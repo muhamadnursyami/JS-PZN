@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Mengirim dengan Format Query Parameter</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        Search
+        <input type="text" name="search" id="search" />
+      </label>
+      <br />
+      <input
+        type="button"
+        name="buttonSearch"
+        id="buttonSearch"
+        value="search"
+      />
+      <h1 id="reponse"></h1>
+    </form>
+    <script>
+      function doSearch() {
+        // buat ajax
+        const ajax = new XMLHttpRequest();
+        // buat URLSearchParams
+        const searchParam = new URLSearchParams();
+        // menambahkan query params
+        searchParam.append("search", document.getElementById("search").value);
+        // jika ingin menambahkan lebih dari satu
+        searchParam.append("filter", document.getElementById("search").value);
+
+        ajax.open(
+          "POST",
+          `https://eo5848pozghh6wj.m.pipedream.net?${searchParam.toString()}`
+        ); // setalah url nya tambah ? tanda tanya lalu ${} kemudia masukan data urlsearchparam di const searchParam lalu toString
+        ajax.onload = function () {
+          const reponse = document.getElementById("reponse");
+          reponse.innerHTML = ajax.responseText;
+        };
+        // kenapa nggak di buat ajax.setRequestHeader("Content-Type", "application/json"); KARENA kan yang kita kirim kan itu query parameter bukan json.
+        // kirim query parameter nya
+        ajax.send(searchParam);
+      }
+      document.getElementById("buttonSearch").onclick = doSearch;
+    </script>
+  </body>
+</html>

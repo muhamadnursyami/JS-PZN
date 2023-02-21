@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Private Field</title>
+</head>
+
+<body>
+    <script>
+        // Contoh 1 dari pak eko
+        // class Counter {
+        //     // Private 
+        //     #counter = 5;
+
+        //     // Method Untuk Menaikkan Nilai
+        //     increment ()
+        //     {
+        //         this.#counter++;
+        //     }
+
+        //     // Menthod Untuk Menurunkan Nilai
+        //     decrement (){
+        //         this.#counter--;
+        //     }
+
+        //     // untuk mengembalikan nilai yang sudah di naikkan atau di turunkan  
+        //     tampilkan (){
+        //         return this.#counter;
+        //     }
+
+        // }
+
+        // const syami = new Counter();
+        // syami.increment();
+        // syami.increment();
+        // syami.increment();
+        // console.info(syami.tampilkan());
+
+
+        // Contoh Soal Kedua dari syami
+
+        class Sekolah {
+
+            #mahasiswa = "Muhamad Nur Syami";
+            kelas(){
+                //return this.#mahasiswa
+                return `Hallo nama saya ${this.#mahasiswa}`;
+            }
+        }
+
+        const siswa = new Sekolah();
+        // siswa.#mahasiswa = "Budi";
+        console.info(siswa.kelas());
+
+
+
+
+    </script>
+</body>
+
+</html>

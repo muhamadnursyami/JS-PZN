@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Export Named dan Default</title>
+  </head>
+  <body>
+    Penggabungan Export Default dan Export Named
+  </body>
+  <script type="module">
+    //default valuenya didepan , baru content dan title nya di dalam module
+    import outhorDefault, { content, title } from "./exportdefault-named.js";
+
+    // import {
+    //   outhor as outhorDefault,
+    //   content,
+    //   title,
+    // } from "./exportdefault-named.js";
+    // // INI SAMA AJA DENGAN YANG DIA ATAS
+
+    console.info(content);
+    console.info(title);
+    console.info(outhorDefault);
+  </script>
+</html>

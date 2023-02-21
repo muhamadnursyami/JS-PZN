@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set</title>
+  </head>
+  <body>
+    <script>
+      /*
+        -> set merupakan  implementasi  dari sturktur data  yang berisikan data-data unique
+        -> set mirip seperti Array , hanya saja isi datanya selalu unique
+        -> set bagus digunakan jika kita tidak ingin ada data duplikat
+        -> jika kita menambahkan  data yang sama , maka data yang akan di terima 
+            adalah data yang terbaru, dan hanya satu saja.
+        -> set meng implementasikan  kontrak iterable, sehingga  bisa iterasi secara default pakai for in atau for of
+        
+        -> instance Method dan Property
+            1) size         -> menjumlahkan data dari setnya atau panjang set nya. ini ke property
+            2) add(value)   -> menambahkan data ke dalam set nya , kalo datanya sama, data yang lama di hapus, data yang baru nya di terima.
+            3) has(value)   -> untuk mengecek apakah di set memiliki data value yang di masukan , balikanya boolean
+            4) delete(value)-> unutk menghapus data nya dalam set
+            5) forEach(value => {}) -> untuk interasi    
+
+        */
+
+      const set = new Set();
+
+      set.add("Muhamad");
+      set.add("Nur");
+      set.add("Nur");
+      set.add("Syami");
+      /* data yang di masukkan adalah 4, tetapi ketika di console hanya 3 data yang di tampilkan 
+            karena set tidak menerima data data duplikat.
+    */
+
+      console.info(set);
+      console.info(set.size); // panjang set
+      console.info(set.has("Syami")); // mengecek apakah ada value Syami di set, huruf besar dan kecil diperhatikan
+
+      set.forEach((value) => {
+        console.info(value);
+      });
+
+      console.info(set.delete("Nur")); // balikanya boolean, jika sudah dihapus maka true, jika datanya tidak ada maka false
+      console.info(set.clear()); // menghapus semua data
+      console.info(set.size);
+    </script>
+  </body>
+</html>
